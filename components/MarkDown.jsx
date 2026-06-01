@@ -33,7 +33,7 @@ export default function ChatMarkdown({ content }) {
           ),
 
           p: ({ children }) => (
-            <p className="leading-8 mb-3 text-black">{children}</p>
+            <p className="leading-8 mb-3 text-black dark:text-white">{children}</p>
           ),
 
           blockquote: ({ children }) => (

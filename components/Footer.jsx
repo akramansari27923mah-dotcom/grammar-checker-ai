@@ -22,7 +22,8 @@ const Footer = () => {
 
             <div className="flex items-center gap-4 mt-6">
               <Link
-                href="/"
+              target="_blank"
+                href="https://github.com/akramansari27923mah-dotcom/grammar-checker-ai"
                 className="p-2 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300"
               >
                 <FaGithub size={18} />

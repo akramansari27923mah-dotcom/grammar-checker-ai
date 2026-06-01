@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react-hooks/rules-of-hooks */
 import { api } from "@/lib/axios";
 import { LoaderCircle, RefreshCcw, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";

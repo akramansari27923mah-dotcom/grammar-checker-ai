@@ -100,3 +100,11 @@ export const navItems = [
     icon: Mail,
   },
 ];
+
+export const navItemsForMob = [
+  { name: "Home", href: "#" },
+  { name: "Features", href: "#features" },
+  { name: "How It Works", href: "#hiw" },
+  // { name: "About", href: "#about" },
+  // { name: "Contact", href: "#contact" },
+];
