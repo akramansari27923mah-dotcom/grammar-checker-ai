@@ -4,11 +4,14 @@ import { groqModel } from "@/schemas/groq.model.schema";
 import { historyModel } from "@/schemas/history.model.schema";
 import jwt from "jsonwebtoken";
 import { totalChecksModel } from "@/schemas/totalChecks.model.schema";
+import { systemPrompt } from "@/lib/groqPrompt";
+import { supportChatPrompt } from "@/lib/supportChatPrompt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
     const accessToken = await req.cookies.get("accessToken");
-    const { prompt } = body;
+    const { prompt, support } = body;
+    console.log(support);
 
     if (!prompt) {
       return res.json({
@@ -17,7 +20,9 @@ export const POST = async (req) => {
       });
     }
 
-    const groqRes = await handelGroq(prompt);
+    const sysPrompt = support ? supportChatPrompt : systemPrompt;
+
+    const groqRes = await handelGroq(prompt, sysPrompt);
 
     const decoded = jwt.verify(
       accessToken?.value,
@@ -35,7 +40,7 @@ export const POST = async (req) => {
       replyFromAi: groqRes,
     });
 
-     await totalChecksModel.create({
+    await totalChecksModel.create({
       userId: decoded.id,
       prompt,
       replyFromAi: groqRes,

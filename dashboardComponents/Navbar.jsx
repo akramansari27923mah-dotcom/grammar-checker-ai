@@ -13,22 +13,29 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(64);
+  const [open, setOpen] = useState(260);
 
   return (
     <>
-      <div className={`fixed z-40 w-${open}`}>
+      <div
+        className={`fixed z-40`}
+        style={{
+          width: `${open}px`,
+        }}
+      >
         {/* Sidebar */}
 
-        <div
-          className="p-3 md:p-1 cursor-pointer"
-          onClick={() => setOpen(64)}
-        >
+        <div className="p-3 md:p-1 cursor-pointer" onClick={() => setOpen(260)}>
           <ArrowRightToLine />
         </div>
 
         <>
-          <aside className={`bg-white text-black ${open === 64 && 'p-5'} transition-all duration-300 h-screen fixed top-0 left-0 overflow-hidden w-${open}`}>
+          <aside
+            className={`bg-white text-black ${open === 260 ? "p-5" : ""} transition-all duration-300 h-screen fixed top-0 left-0 overflow-hidden border border-gray-200`}
+            style={{
+              width: `${open}px`,
+            }}
+          >
             <div className="flex  items-center gap-2 text-xl font-semibold mb-8">
               <div>
                 <span className="py-1 px-2 rounded-lg bg-blue-500 text-white">
@@ -36,10 +43,7 @@ const Navbar = () => {
                 </span>
               </div>
               <span className="text-nowrap">Grammer AI</span>
-              <div
-                className="p-3 cursor-pointer"
-                onClick={() => setOpen(0)}
-              >
+              <div className="p-3 cursor-pointer" onClick={() => setOpen(0)}>
                 <ArrowLeftToLine />
               </div>
             </div>

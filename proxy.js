@@ -1,7 +1,7 @@
 import { NextResponse as res } from "next/server";
 
 export const config = {
-  matcher: ["/grammar-checker"],
+  matcher: ["/grammar-checker", "/dashboard/:path*"],
 };
 
 export async function proxy(req) {

@@ -8,6 +8,7 @@ import HowItWork from "./HowItWork";
 import Reach from "./Reach";
 import GetStarted from "./GetStarted";
 import Footer from "./Footer";
+import Chat from "./Chat";
 
 export default function MainLayout({ children }) {
   const pathName = usePathname();
@@ -40,6 +41,7 @@ export default function MainLayout({ children }) {
           <>
             <Navebar />
             <Hero />
+            <Chat />
             <Features />
             <HowItWork />
             <Reach />
