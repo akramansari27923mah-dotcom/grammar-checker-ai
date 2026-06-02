@@ -9,12 +9,12 @@ export default function ChatMarkdownSupport({ content }) {
   const [copied, setCopied] = useState(false);
 
   return (
-    <div className="prose prose-invert max-w-none wrap-break-word text-black">
+    <div className="prose prose-invert max-w-none wrap-break-word">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           p: ({ children }) => (
-            <p className="leading-7 mb-3 text-gray-900 dark:text-gray-100">
+            <p className="leading-7 mb-3 text-sm dark:text-gray-100">
               {children}
             </p>
           ),

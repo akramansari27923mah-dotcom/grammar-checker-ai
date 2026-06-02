@@ -3,7 +3,7 @@
 import { ChevronRight, LoaderCircle, Send, Trash } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import handleChat from "@/lib/handleChatOfAi";
-import ChatMarkdownSupport from "./MarkDown";
+import ChatMarkdownSupport from "./MarkDownSupport";
 import Image from "next/image";
 
 const Chat = () => {
@@ -22,6 +22,8 @@ const Chat = () => {
     setLoader(true);
     try {
       const res = await handleChat(inputValue, setLoader, "support");
+      console.log();
+      
 
       setMessage((prev) => [
         ...prev,
@@ -132,11 +134,11 @@ const Chat = () => {
           ${
             msg?.role === "user"
               ? "bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-br-md"
-              : "  bg-black/50 backdrop-blur-md rounded-bl-md text-white"
+              : " text-black backdrop-blur-md rounded-bl-md"
           }
         `}
                   >
-                    <ChatMarkdownSupport content={msg.content} />
+                    <ChatMarkdownSupport content={msg?.content} />
                     <div ref={messageRef}></div>
                   </div>
                 </div>
