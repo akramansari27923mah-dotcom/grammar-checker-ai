@@ -10,7 +10,7 @@ const Chat = () => {
   const [message, setMessage] = useState([]);
   const [prompt, setPrompt] = useState("");
   const [loader, setLoader] = useState(false);
-  const [showChat, setShowChat] = useState(400);
+  const [showChat, setShowChat] = useState(false);
   const messageRef = useRef(null);
 
   const sendMessage = async () => {
@@ -22,8 +22,7 @@ const Chat = () => {
     setLoader(true);
     try {
       const res = await handleChat(inputValue, setLoader, "support");
-      console.log();
-      
+      console.log(res);
 
       setMessage((prev) => [
         ...prev,
@@ -60,120 +59,135 @@ const Chat = () => {
     });
   }, [message]);
 
-  return (
-    <>
+ return (
+  <>
+    
+    {!showChat && (
       <div
-        className="fixed bottom-5 right-5 z-30"
-        onClick={() => setShowChat(400)}
+        className="fixed bottom-5 right-5 z-50"
+        onClick={() => setShowChat(true)}
       >
         <Image
-          src={"/robot.png"}
+          src="/robot.png"
           width={60}
           height={60}
           alt="robot"
-          className="rounded-full border border-gray-300 shadow hover:scale-105 cursor-pointer transition-all duration-300"
+          className="rounded-full border border-gray-300 shadow-xl cursor-pointer hover:scale-110 transition-all duration-300"
         />
       </div>
+    )}
 
-      <div
-        className={`text-black bg-white fixed cursor-pointer hover:scale-105 transition-all duration-300 top-75 right-100 z-90 hidden md:block ${showChat === 0 && 'md:hidden'}`}
-        onClick={() => setShowChat(0)}
-      >
-        <div className="w-10 h-10 rounded-lg bg-white shadow-2xl border flex justify-center items-center">
-          <ChevronRight />
+
+    <div
+      className={`fixed top-0 right-0 z-50 h-screen bg-white shadow-2xl border-l border-gray-200 transition-transform duration-300
+      ${showChat ? "translate-x-0" : "translate-x-full"}
+      w-full md:w-105`}
+    >
+      <div className="flex flex-col h-full">
+        {/* Header */}
+        <div className="flex justify-between items-center px-4 py-3 border-b bg-white">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 flex justify-center items-center text-white font-bold text-xl shadow-lg">
+              G
+            </div>
+
+            <div>
+              <h2 className="font-semibold text-lg">Grammar AI</h2>
+
+              <div className="flex items-center gap-1">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+
+                <p className="text-xs text-gray-500">
+                  {loader
+                    ? "Typing..."
+                    : "Online • Always here to help"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button>
+              <Trash
+                size={18}
+                className="text-gray-500 hover:text-red-500"
+              />
+            </button>
+
+            <button
+              onClick={() => setShowChat(false)}
+              className="p-2 rounded-lg border hover:bg-gray-100 cursor-pointer"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div
-        className="flex justify-center items-center h-screen fixed top-0 right-0 z-50 transition-all duration-300"
-        style={{ width: `${showChat}px` }}
-      >
-        <div
-          className=" bg-white border border-gray-200 h-screen"
-          style={{ width: `${showChat}px` }}
-        >
-          <div className="flex justify-between items-center p-2 border-b border-gray-200">
-            <div className="flex justify-center items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 shadow-lg shadow-green-500/30 flex justify-center items-center text-white font-extrabold text-2xl border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:rotate-3">
-                G
-              </div>
-              <span className="font-semibold text-lg">Grammar AI</span>
-            </div>
-
-            <div className="flex justify-center items-center gap-3">
-              <span>
-                <Trash size={20} />
-              </span>
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          {message.map((msg, ind) => (
+            <div
+              key={ind}
+              className={`flex ${
+                msg.role === "user"
+                  ? "justify-end"
+                  : "justify-start"
+              }`}
+            >
               <div
-                className="text-black cursor-pointer hover:scale-105 transition-all duration-300 z-90 md:hidden"
-                onClick={() => setShowChat(0)}
+                className={`max-w-[85%] px-4 py-1 rounded-2xl text-sm md:text-base whitespace-pre-wrap shadow-sm
+                ${
+                  msg.role === "user"
+                    ? "bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-br-md"
+                    : "bg-white text-gray-800 rounded-bl-md border"
+                }`}
               >
-                <div className="w-7 h-7 rounded-lg bg-white shadow-2xl border flex justify-center items-center">
-                  <ChevronRight />
-                </div>
+                <ChatMarkdownSupport
+                  content={
+                    typeof msg.content === "string"
+                      ? msg.content
+                      : JSON.stringify(msg.content)
+                  }
+                />
               </div>
             </div>
-          </div>
+          ))}
 
-          {/* chat section */}
-          <div className="h-130 w-full p-2 overflow-scroll hide-scroll">
-            <div className="flex flex-col gap-4 p-4 overflow-y-auto">
-              {message.map((msg, ind) => (
-                <div
-                  key={ind}
-                  className={`flex ${
-                    msg?.role === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  <div
-                    className={`
-          max-w-[80%] px-4 py-1 rounded-3xl
-          text-sm md:text-base leading-relaxed
-          transition-all duration-300
-           whitespace-pre-wrap
-          ${
-            msg?.role === "user"
-              ? "bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-br-md"
-              : " text-black backdrop-blur-md rounded-bl-md"
-          }
-        `}
-                  >
-                    <ChatMarkdownSupport content={msg?.content} />
-                    <div ref={messageRef}></div>
-                  </div>
-                </div>
-              ))}
-
-              {loader && (
-                <div className="flex items-center gap-2">
-                  <LoaderCircle className="animate-spin" />
-                  Loading...
-                </div>
-              )}
+          {loader && (
+            <div className="flex items-center gap-2 text-gray-500">
+              <LoaderCircle className="animate-spin" size={18} />
+              <span>Thinking...</span>
             </div>
-          </div>
+          )}
 
-          <div className="flex justify-center p-4 items-center h-15 gap-5 border-t border-gray-200">
+          <div ref={messageRef}></div>
+        </div>
+
+        {/* Input */}
+        <div className="border-t bg-white p-3">
+          <div className="flex items-center gap-2">
             <input
               type="text"
-              onKeyDown={handleKeyDown}
-              onChange={(e) => setPrompt(e.target.value)}
               value={prompt}
-              placeholder="Type your sentence..."
-              className="p-2 rounded-lg w-full max-w-md text-sm border outline-none border-gray-200"
+              onChange={(e) => setPrompt(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask Grammar AI..."
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
             />
+
             <button
               onClick={sendMessage}
               disabled={!prompt.trim()}
-              className="w-12 h-11 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 shadow-lg shadow-green-500/30 flex justify-center items-center text-white font-extrabold text-2xl border border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:rotate-3 cursor-pointer disabled:cursor-not-allowed"
+              className="h-12 w-12 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 text-white flex items-center justify-center shadow-lg hover:scale-105 transition disabled:opacity-50 cursor-pointer"
             >
-              <Send />
+              <Send size={18} />
             </button>
           </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 };
 
 export default Chat;

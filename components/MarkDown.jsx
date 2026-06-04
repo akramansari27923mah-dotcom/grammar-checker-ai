@@ -13,9 +13,6 @@ export default function ChatMarkdown({ content }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          p({ children }) {
-            return <p className="mb-2 leading-relaxed">{children}</p>;
-          },
 
           li({ children }) {
             return <li className="ml-4 list-disc">{children}</li>;
@@ -33,7 +30,7 @@ export default function ChatMarkdown({ content }) {
           ),
 
           p: ({ children }) => (
-            <p className="leading-8 mb-3 text-white text-sm dark:text-white">
+            <p className="leading-8 mb-3 text-green-500 text-sm dark:text-white">
               {children}
             </p>
           ),
