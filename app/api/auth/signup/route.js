@@ -30,6 +30,7 @@ export const POST = async (req) => {
       username,
       email,
       password: hasedPassword,
+      provider: 'credentials'
     });
 
     const response = res.json({

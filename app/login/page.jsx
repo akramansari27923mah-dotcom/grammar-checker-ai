@@ -12,6 +12,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { everyWearCon } from "@/contexts/everyWear";
+import LoginWithGoogle from "@/components/LoginWithGoogle";
 
 const LoginRoute = () => {
   const model = {
@@ -133,6 +134,10 @@ const LoginRoute = () => {
             )}
           </button>
         </form>
+
+        <div className="flex justify-center items-center mt-5">
+          <LoginWithGoogle />
+        </div>
 
         <div className="flex justify-center items-center gap-1 text-sm mt-6 text-gray-600">
           <span>Don&apos;t have an account?</span>

@@ -11,7 +11,6 @@ export const POST = async (req) => {
     const body = await req.json();
     const accessToken = await req.cookies.get("accessToken");
     const { prompt, support } = body;
-    console.log(support);
 
     if (!prompt) {
       return res.json({
@@ -34,11 +33,13 @@ export const POST = async (req) => {
       replyFromAi: groqRes,
     });
 
-    await historyModel.create({
-      userId: decoded.id,
-      prompt,
-      replyFromAi: groqRes,
-    });
+    if(!support){
+      await historyModel.create({
+        userId: decoded.id,
+        prompt,
+        replyFromAi: groqRes,
+      });
+    }
 
     await totalChecksModel.create({
       userId: decoded.id,

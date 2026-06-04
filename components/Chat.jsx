@@ -129,7 +129,7 @@ const Chat = () => {
             <div
               key={ind}
               className={`flex ${
-                msg.role === "user"
+                msg?.role === "user"
                   ? "justify-end"
                   : "justify-start"
               }`}
@@ -137,16 +137,16 @@ const Chat = () => {
               <div
                 className={`max-w-[85%] px-4 py-1 rounded-2xl text-sm md:text-base whitespace-pre-wrap shadow-sm
                 ${
-                  msg.role === "user"
+                  msg?.role === "user"
                     ? "bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-br-md"
                     : "bg-white text-gray-800 rounded-bl-md border"
                 }`}
               >
                 <ChatMarkdownSupport
                   content={
-                    typeof msg.content === "string"
-                      ? msg.content
-                      : JSON.stringify(msg.content)
+                    typeof msg?.content === "string"
+                      ? msg?.content
+                      : JSON.stringify(msg?.content)
                   }
                 />
               </div>
