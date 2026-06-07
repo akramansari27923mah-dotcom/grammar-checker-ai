@@ -34,10 +34,8 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
         <AuthProvider>
-          <MainLayout>
-            {children}
-            <Toaster />
-          </MainLayout>
+          {children}
+          <Toaster />
         </AuthProvider>
       </body>
     </html>

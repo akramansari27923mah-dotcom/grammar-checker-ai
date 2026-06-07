@@ -7,7 +7,6 @@ import { ThemeToggle } from "./Theme-toggle";
 import { everyWearCon } from "@/contexts/everyWear";
 import { useAuth } from "@/hooks/useAuth";
 import { navItemsForMob } from "@/data/links";
-import { navItems } from "@/data/links";
 
 
 

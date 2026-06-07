@@ -14,15 +14,19 @@ export const AuthProvider = ({ children }) => {
   const [historyLoader, setHistoryLoader] = useState(false);
   const [saved, setSaved] = useState([]);
   const [saveLoader, setSaveLoader] = useState(false);
-  
+  const [checkUserLoader, setCheckUserLoader] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
+      setCheckUserLoader(true);
       try {
         const { data } = await api.get("/auth/getme");
         setUser(data?.user);
+        localStorage.setItem("userId", data?.user?.id);
       } catch (err) {
         console.log(err.message);
+      } finally {
+        setCheckUserLoader(false);
       }
     };
 
@@ -62,6 +66,7 @@ export const AuthProvider = ({ children }) => {
         setSaved,
         saveLoader,
         setSaveLoader,
+        checkUserLoader,
       }}
     >
       {children}

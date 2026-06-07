@@ -49,10 +49,10 @@ export const POST = async (req) => {
     });
 
     await sendEmail(
-      isUser.email,
+      isUser?.email,
       "Login Alert",
       `
-      Hello, ${isUser.username}
+      Hello, ${isUser?.username}
 
 You have successfully logged into your account.
 
