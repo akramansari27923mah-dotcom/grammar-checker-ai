@@ -12,7 +12,6 @@ const Chat = () => {
   const [prompt, setPrompt] = useState("");
   const [loader, setLoader] = useState(false);
   const [showChat, setShowChat] = useState(false);
-  const { user } = everyWearCon();
   const messageRef = useRef(null);
   
   // useEffect(() => {
@@ -40,12 +39,13 @@ const Chat = () => {
     setLoader(true);
     try {
       const res = await handleChat(inputValue, setLoader, "support");
+      
 
       setMessage((prev) => [
         ...prev,
         {
           role: "ai",
-          content: res,
+          content:res,
         },
       ]);
     } catch (err) {

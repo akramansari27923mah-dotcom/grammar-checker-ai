@@ -12,6 +12,9 @@ export const POST = async (req) => {
     const accessToken = await req.cookies.get("accessToken");
     const { prompt, support } = body;
 
+    console.log(prompt);
+    
+
     if (!prompt) {
       return res.json({
         message: "Prompt is required",
@@ -33,7 +36,7 @@ export const POST = async (req) => {
       replyFromAi: groqRes,
     });
 
-    if(!support){
+    if (!support) {
       await historyModel.create({
         userId: decoded.id,
         prompt,
