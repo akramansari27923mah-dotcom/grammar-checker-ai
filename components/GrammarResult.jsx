@@ -3,6 +3,10 @@
 import { Copy } from "lucide-react";
 
 export default function GrammarResult({ data, copied, copyResult }) {
+
+  console.log("result",data);
+  
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4">

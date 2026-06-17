@@ -38,6 +38,8 @@ const Chat2 = () => {
     setLoader(true);
     try {
       const { data } = await api.post("/groq/grammarChecker", { prompt });
+
+      setResult(JSON.parse(data));
       localStorage.setItem("result", data);
     } catch (err) {
       console.log(err.message);
@@ -184,7 +186,7 @@ dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
                 <div className=" prose dark:prose-invert max-w-none  text-gray-700  dark:text-gray-200 whitespace-pre-wrap">
                   {result && (
                     <GrammarResult
-                      data={JSON.parse(result)}
+                      data={result}
                       copied={copied}
                       copyResult={copyResult}
                       clearResult={clearResult}
