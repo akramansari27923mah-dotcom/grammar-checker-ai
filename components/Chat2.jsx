@@ -38,8 +38,7 @@ const Chat2 = () => {
     setLoader(true);
     try {
       const { data } = await api.post("/groq/grammarChecker", { prompt });
-
-      localStorage.setItem("result", JSON.stringify(data));
+      localStorage.setItem("result", data);
     } catch (err) {
       console.log(err.message);
     } finally {
