@@ -2,7 +2,6 @@
 "use client";
 import { api } from "@/lib/axios";
 import {
-  Copy,
   Download,
   LayoutDashboard,
   LoaderCircle,
@@ -10,7 +9,6 @@ import {
   Sparkles,
   Trash,
 } from "lucide-react";
-import ChatMarkdown from "./MarkDown";
 import React, { useEffect, useState } from "react";
 import { everyWearCon } from "@/contexts/everyWear";
 import { errorShow } from "@/lib/toast";
@@ -41,7 +39,6 @@ const Chat2 = () => {
     try {
       const { data } = await api.post("/groq/grammarChecker", { prompt });
 
-      setResult(data);
       localStorage.setItem("result", JSON.stringify(data));
     } catch (err) {
       console.log(err.message);
@@ -137,7 +134,7 @@ dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
                 value={prompt}
                 onKeyDown={handlekeyDown}
                 placeholder="Type your sentence here..."
-                className=" w-full h-75 md:h-100 lg:h-75 rounded-2xl p-5 outline-none border  border-gray-200  dark:border-slate-700  bg-white/70  dark:bg-slate-950 resize-none text-sm  dark:text-white focus:ring-4  focus:ring-blue-500/20 transition"
+                className=" w-full h-60 md:h-100 lg:h-75 rounded-2xl p-5 outline-none border  border-gray-200  dark:border-slate-700  bg-white/70  dark:bg-slate-950 resize-none text-sm  dark:text-white focus:ring-4  focus:ring-blue-500/20 transition"
               />
 
               <div className="flex justify-end mt-2 text-sm text-gray-500">
