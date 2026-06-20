@@ -48,21 +48,7 @@ export const POST = async (req) => {
       status: 200,
     });
 
-    await sendEmail(
-      isUser?.email,
-      "Login Alert",
-      `
-      Hello, ${isUser?.username}
-
-You have successfully logged into your account.
-
-If this was you, no action is needed.
-
-If you did not log in, please change your password immediately.
-
-Thank you.
-      `,
-    );
+    await sendEmail(isUser?.email, isUser?.username);
 
     response.cookies.set("accessToken", accessToken, accessCookieOptions);
 

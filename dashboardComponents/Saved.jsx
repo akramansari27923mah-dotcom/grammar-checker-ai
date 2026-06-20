@@ -12,7 +12,7 @@ const Saved = () => {
     everyWearCon();
   const [cardId, setCardId] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
-  const route = useRouter()
+  const route = useRouter();
 
   useEffect(() => {
     const savedFetchFunction = async () => {
@@ -41,7 +41,7 @@ const Saved = () => {
   const handleDelete = async (id) => {
     setUpdate(true);
     try {
-      const { data } = await api.delete(`/saved/${id}`);
+      await api.delete(`/saved/${id}`);
     } catch (err) {
       console.log(err.message);
     } finally {
@@ -50,8 +50,7 @@ const Saved = () => {
   };
 
   const view = (result) => {
-    localStorage.setItem("result", JSON.stringify(result));
-    localStorage.setItem("view", "view");
+    localStorage.setItem("result", result);
     route.push("/grammar-checker");
   };
 

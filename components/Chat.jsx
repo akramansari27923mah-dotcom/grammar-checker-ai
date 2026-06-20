@@ -14,22 +14,7 @@ const Chat = () => {
   const [showChat, setShowChat] = useState(false);
   const messageRef = useRef(null);
   
-  // useEffect(() => {
-  //   const user = localStorage.getItem("userId");
-  //   const res = localStorage.getItem(`message_${user}`);
-  //   if (res) {
-  //     setMessage(JSON.parse(res));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   const user = localStorage.getItem("userId");
-  //   if (user) {
-  //     localStorage.setItem(`message_${user}`, JSON.stringify(message));
-  //     console.log(user);
-  //   }
-  // }, [message]);
-
+  
   const sendMessage = async () => {
     const inputValue = prompt.trim();
 
@@ -38,7 +23,7 @@ const Chat = () => {
     setPrompt("");
     setLoader(true);
     try {
-      const res = await handleChat(inputValue, setLoader, "support");
+      const res = await handleChat(inputValue, setLoader);
       
 
       setMessage((prev) => [

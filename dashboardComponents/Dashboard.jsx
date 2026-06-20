@@ -9,12 +9,10 @@ const Dashboard = () => {
   const { user, saved } = everyWearCon();
   const [savedLen, setSavedLen] = useState([]);
 
-  
-
   useEffect(() => {
     const savedLenFetch = async () => {
       try {
-        const { data } = await api.get("/totalChecks"); 
+        const { data } = await api.get("/totalChecks");
         setSavedLen(data.data);
       } catch (err) {
         console.log(err.message);
@@ -74,52 +72,18 @@ const Dashboard = () => {
           return (
             <div
               key={ind}
-              className="
-          group
-          relative
-          overflow-hidden
-          rounded-2xl
-          bg-white
-          dark:bg-gray-900
-          p-5
-          shadow-md
-          border
-          border-zinc-200
-          transition-all
-          duration-300
-          hover:-translate-y-2
-          hover:shadow-2xl
-          hover:border-blue-400
-          cursor-pointer
+              className=" group relative overflow-hidden rounded-2xl  bg-white  dark:bg-gray-900 p-5 shadow-md border  border-zinc-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl  hover:border-blue-400 cursor-pointer
         "
             >
               <div
-                className="
-            absolute
-            inset-0
-            bg-lienear-to-r
-            from-blue-500/5
-            to-purple-500/5
-            opacity-0
-            group-hover:opacity-100
-            transition-all
-            duration-300
+                className=" absolute inset-0 bg-lienear-to-r  from-blue-500/5  to-purple-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300
           "
               />
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3">
                   <div
-                    className="
-                p-3
-                rounded-xl
-                bg-blue-100
-                text-blue-600
-                transition-all
-                duration-300
-                group-hover:scale-110
-                group-hover:rotate-6
-              "
+                    className=" p-3 rounded-xl  bg-blue-100  text-blue-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
                   >
                     <Icon size={24} />
                   </div>
@@ -130,21 +94,12 @@ const Dashboard = () => {
                 </div>
 
                 <h2
-                  className="
-              mt-5
-              text-3xl
-              font-bold
-              text-zinc-800
-              dark:text-white
-              group-hover:text-blue-600
-              transition-colors
+                  className=" mt-5 text-3xl font-bold  text-zinc-800  dark:text-white  group-hover:text-blue-600 transition-colors
             "
                 >
-                  {item.title === "Total Checks"
-                    ? savedLen.length
-                    : item.title === "words Checked"
-                      ? 200
-                      : item.title === "Saved Documents" && saved?.length}
+                  {item?.title === "Total Checks"
+                    ? savedLen?.length
+                    : item?.title === "Saved Documents" && saved?.length}
                 </h2>
               </div>
             </div>

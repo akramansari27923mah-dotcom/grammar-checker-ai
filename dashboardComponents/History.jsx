@@ -21,8 +21,7 @@ const History = () => {
   };
 
   const view = (result) => {
-    localStorage.setItem('result', JSON.stringify(result) )
-    localStorage.setItem('view', 'view' )
+    localStorage.setItem('result', result )
     route.push('/grammar-checker')
   }
 
@@ -123,34 +122,34 @@ const History = () => {
           key={item._id}
           className="group bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
         >
-          {/* Top Section */}
+          
           <div className="flex items-start justify-between mb-4">
-            {/* User Icon */}
+          
             <div className="w-11 h-11 rounded-2xl bg-linear-to-r from-blue-500 to-indigo-500 flex items-center justify-center shadow-md">
               <span className="text-white font-semibold text-lg">✨</span>
             </div>
 
-            {/* Time */}
+          
             <span className="text-xs text-gray-400 dark:text-gray-500">
               {timeFormater(item?.createdAt)}
             </span>
           </div>
 
-          {/* Prompt */}
+        
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-800 dark:text-white line-clamp-2">
               {item.prompt}
             </h2>
           </div>
 
-          {/* AI Reply */}
+          
           <div className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-4 border border-gray-100 dark:border-slate-700">
             <p className="text-sm leading-7 text-gray-600 dark:text-gray-300 line-clamp-5">
               {item?.replyFromAi}
             </p>
           </div>
 
-          {/* Bottom Buttons */}
+          
           <div className="flex items-center gap-3 mt-5">
             <button onClick={() => view(item?.replyFromAi)} className="flex-1 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all duration-200 text-white text-sm cursor-pointer font-medium py-2.5 rounded-2xl">
               View

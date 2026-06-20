@@ -5,7 +5,6 @@ import { historyModel } from "@/schemas/history.model.schema";
 import jwt from "jsonwebtoken";
 import { totalChecksModel } from "@/schemas/totalChecks.model.schema";
 import { systemPrompt } from "@/lib/groqPrompt";
-import { supportChatPrompt } from "@/lib/supportChatPrompt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
@@ -22,7 +21,7 @@ export const POST = async (req) => {
       });
     }
 
-    const sysPrompt = support ? supportChatPrompt : systemPrompt;
+    const sysPrompt = systemPrompt;
 
     const groqRes = await handelGroq(prompt, sysPrompt);
 
