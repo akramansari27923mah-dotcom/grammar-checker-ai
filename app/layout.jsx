@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/everyWear";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
         <AuthProvider>
           {children}
-          <Toaster />
+          <Toaster position="top-right" richColors />
         </AuthProvider>
       </body>
     </html>
