@@ -16,22 +16,22 @@ import {
 
 export const features = [
   {
-    icon: CircleCheck,
+    icon: "/feature/correct.png",
     title: "Grammer Correction",
     desc: "Fix grammar mistacks and improve sentence structure.",
   },
   {
-    icon: Pencil,
+    icon: "/feature/check.png",
     title: "Spelling Check",
     desc: "Detect and correct spelling mistacks instantly.",
   },
   {
-    icon: ListTree,
+    icon: "/feature/improve.png",
     title: "Style improvement",
     desc: "Enhance your writing style and tone with AI.",
   },
   {
-    icon: TrendingUp,
+    icon: "/feature/result.png",
     title: "Instant Results",
     desc: "Get real-time suggestions and corrections.",
   },

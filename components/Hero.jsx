@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown, Copy, Download } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => {
@@ -57,21 +58,6 @@ const Hero = () => {
             >
               Start Checking Free →
             </Link>
-
-            <button
-              className="
-                px-8 py-4
-                rounded-xl
-                border
-                border-slate-300
-                bg-white/70
-                backdrop-blur-md
-                hover:bg-white
-                transition-all
-              "
-            >
-              Watch Demo
-            </button>
           </div>
 
           
@@ -95,92 +81,15 @@ const Hero = () => {
 
       
       {/* Right side */}
-        <div className="relative">
-          <div className="absolute -top-6 -left-6 dark:text-black bg-white px-4 py-2 rounded-xl shadow-xl z-20">
-            ✨ Grammar Fixed
-          </div>
-
-          <div className="absolute md:-bottom-6 dark:text-black -bottom-1 -right-6 bg-white px-4 py-2 rounded-xl shadow-xl z-20">
-            ⚡ AI Powered
-          </div>
-
-          
-          <div className="bg-white/90 dark:bg-slate-900 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 mb-5 md:mb-0 p-6">
-
-            <div className="space-y-3">
-
-              <div className="flex justify-end items-center gap-3 text-sm">
-                <div className="flex items-center gap-2 border border-slate-300 px-3 py-1 rounded-lg">
-                  <span>English</span>
-                  <ChevronDown size={15} />
-                </div>
-
-                <button className="border border-slate-300 px-3 py-1 rounded-lg">
-                  Clear
-                </button>
-              </div>
-
-              <h2 className="text-xl font-semibold dark:text-white">
-                Your Text
-              </h2>
-
-              <textarea
-                className="
-                  w-full
-                  h-40
-                  rounded-xl
-                  border
-                  border-slate-300
-                  dark:border-slate-700
-                  bg-transparent
-                  p-4
-                  resize-none
-                  outline-none
-                "
-                placeholder="I has a pen..."
-              />
-
-              <button
-                className="
-                  w-full
-                  py-3
-                  rounded-xl
-                  bg-blue-600
-                  text-white
-                  font-medium
-                  hover:bg-blue-700
-                  transition
-                "
-              >
-                Correct Grammar
-              </button>
-
-              
-              <div className="rounded-xl bg-green-50 border border-green-200 p-4">
-                <p className="text-red-500 line-through">
-                  I has a pen.
-                </p>
-
-                <p className="mt-2 text-green-600 font-semibold">
-                  I have a pen.
-                </p>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <button className="flex items-center gap-2 border border-slate-300 px-4 py-2 rounded-lg hover:bg-slate-100 transition">
-                  <Copy size={16} />
-                  Copy
-                </button>
-
-                <button className="flex items-center gap-2 border border-slate-300 px-4 py-2 rounded-lg hover:bg-slate-100 transition">
-                  <Download size={16} />
-                  Download
-                </button>
-              </div>
-
-            </div>
-          </div>
-
+        <div className="relative hover:scale-105 transition-all duration-300">
+          <Image 
+          src={'/hero.png'}
+          loading="lazy"
+          alt="hero image"
+          width={600}
+          height={600}
+          className="rounded-2xl"
+          />
         </div>
       </div>
     </section>

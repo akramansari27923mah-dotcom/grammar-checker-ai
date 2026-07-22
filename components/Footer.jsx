@@ -40,30 +40,6 @@ const Footer = () => {
               Improve your writing with our AI-powered grammar checker. Write
               confidently, fix mistakes instantly, and communicate better.
             </p>
-
-            <div className="flex items-center gap-4 mt-6">
-              <Link
-                target="_blank"
-                href="https://github.com/akramansari27923mah-dotcom/grammar-checker-ai"
-                className="p-2 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300"
-              >
-                <FaGithub size={18} />
-              </Link>
-
-              <Link
-                href="/"
-                className="p-2 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300"
-              >
-                <FaLinkedin size={18} />
-              </Link>
-
-              <Link
-                href="/"
-                className="p-2 rounded-full bg-gray-800 hover:bg-pink-500 transition-all duration-300"
-              >
-                <FaInstagram size={18} />
-              </Link>
-            </div>
           </div>
 
           <div>

@@ -1,4 +1,5 @@
 import { features } from "@/data/links";
+import Image from "next/image";
 import React from "react";
 
 const Features = () => {
@@ -14,20 +15,24 @@ const Features = () => {
 
         <div className="w-full flex justify-center items-center flex-wrap gap-8 mt-8">
           {features.map((item, ind) => {
-            const Icon = item.icon;
 
             return (
               <div
                 key={ind}
-                className="group w-72 bg-white dark:bg-gray-900 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+                className="group w-72 bg-white dark:bg-gray-900 border border-gray-200 rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
               >
     
-                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                  <Icon size={28} />
+                <div className=" flex items-center justify-center overflow-hidden rounded-t-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                  <Image 
+                  src={item.icon}
+                  alt={item.title}
+                  height={600}
+                  width={600}
+                  />
                 </div>
 
           
-                <div className="mt-5 space-y-3">
+                <div className="p-5 space-y-3">
                   <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-300">
                     {item.title}
                   </h2>
@@ -36,10 +41,6 @@ const Features = () => {
                     {item.desc}
                   </p>
                 </div>
-
-                <button className="mt-5 text-sm font-medium text-blue-600 group-hover:translate-x-1 transition-all duration-300">
-                  Learn More →
-                </button>
               </div>
             );
           })}

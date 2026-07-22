@@ -3,8 +3,6 @@
 import { Copy } from "lucide-react";
 
 export default function GrammarResult({ data, copied, copyResult }) {
-
-  console.log("result",data);
   
 
   return (
