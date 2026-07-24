@@ -103,7 +103,7 @@ export default function PrivacyPolicy() {
               <p>
                 <strong>GrammarCheckerAI</strong>
               </p>
-              <p>Email: support@grammarcheckerai.com</p>
+              <p>Email: grammarcheckerai46@gmail.com</p>
               <p>Website: https://grammarcheckerai.vercel.app</p>
             </div>
           </section>

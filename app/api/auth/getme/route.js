@@ -25,6 +25,7 @@ export const GET = async (req) => {
         username: user.username,
         email: user.email,
         id: user._id,
+        image: user.image ? user.image : null
       },
       status: 200,
     });
