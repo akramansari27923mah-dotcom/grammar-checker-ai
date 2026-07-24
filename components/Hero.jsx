@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown, Copy, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,7 +62,7 @@ const Hero = () => {
           
           <div className="flex flex-wrap gap-10 pt-4">
             <div>
-              <h3 className="text-3xl font-bold text-blue-600">50K+</h3>
+              <h3 className="text-3xl font-bold text-blue-600">10K+</h3>
               <p className="text-sm text-slate-500">Grammar Checks</p>
             </div>
 

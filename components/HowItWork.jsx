@@ -52,10 +52,6 @@ const HowItWork = () => {
                     {item.desc}
                   </p>
                 </div>
-
-                <button className="mt-5 text-sm font-medium text-blue-600 group-hover:translate-x-1 transition-all duration-300">
-                  Learn More →
-                </button>
               </div>
             );
           })}

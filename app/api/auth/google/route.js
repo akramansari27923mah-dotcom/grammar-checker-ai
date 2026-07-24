@@ -1,6 +1,6 @@
 import connectDB from "@/db/database";
 import generateToken, { accessCookieOptions } from "@/lib/generateToken";
-import { sendEmail } from "@/lib/sendEmail";
+import { sendEmail, signInWithGoogleEmail } from "@/lib/sendEmail";
 import { userModel } from "@/schemas/user.model.schema";
 import { NextResponse as res } from "next/server";
 
@@ -35,23 +35,7 @@ export const POST = async (req) => {
       { status: 201 },
     );
 
-    await sendEmail(
-      user.email,
-      "Welcome to Our Platform",
-      `
-          Hello ${user?.username},
-    
-    Your account has been created successfully By Google.
-    
-    We are excited to have you with us.
-    
-    You can now log in and start using our platform.
-    
-    If you have any questions, feel free to contact us.
-    
-    Thank you.
-          `,
-    );
+    await signInWithGoogleEmail(user.email, user?.username);
 
     response.cookies.set("accessToken", accessToken, accessCookieOptions);
 

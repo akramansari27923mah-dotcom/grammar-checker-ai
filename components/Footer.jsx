@@ -82,28 +82,17 @@ const Footer = () => {
 
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/" className="hover:text-white transition">
-                  Blog
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/" className="hover:text-white transition">
+                <Link href="/privacy" target="_blank" className="hover:text-white transition">
                   Privacy Policy
                 </Link>
               </li>
 
               <li>
-                <Link href="/" className="hover:text-white transition">
+                <Link href="/terms" target="_blank" className="hover:text-white transition">
                   Terms & Conditions
                 </Link>
               </li>
 
-              <li>
-                <Link href="/" className="hover:text-white transition">
-                  Help Center
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -143,16 +132,12 @@ const Footer = () => {
           <p>© 2026 GrammerAI. All rights reserved.</p>
 
           <div className="flex items-center gap-5">
-            <Link href="/" className="hover:text-white transition">
+            <Link href="/privacy" target="_blank" className="hover:text-white transition">
               Privacy
             </Link>
 
-            <Link href="/" className="hover:text-white transition">
+            <Link href="/terms" target="_blank" className="hover:text-white transition">
               Terms
-            </Link>
-
-            <Link href="/" className="hover:text-white transition">
-              Security
             </Link>
           </div>
         </div>

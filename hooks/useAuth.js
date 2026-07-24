@@ -11,7 +11,6 @@ export const useAuth = () => {
     setLoader(true);
     setUpdate(true);
     try {
-
       const { data } = await api.post("/auth/signin", userd);
 
       if (data?.user) {
@@ -20,8 +19,7 @@ export const useAuth = () => {
         successShow("Loggdin successfully");
       }
     } catch (err) {
-      console.log(err.message);
-      errorShow("Login failed");
+      if (err.response.status === 401) errorShow("Invalid Credentials");
     } finally {
       setLoader(false);
       setUpdate(false);
@@ -32,16 +30,21 @@ export const useAuth = () => {
     setLoader(true);
     setUpdate(true);
     try {
-
       const { data } = await api.post("/auth/signup", userd);
+      console.log(data);
+      
       if (data?.user) {
         router.push("/login");
         setUser(data?.user);
         successShow("Account created successfully");
       }
     } catch (err) {
-      console.log(err.message);
-      errorShow("Account create failed");
+      
+      if (err.response.status === 400)
+        errorShow("This email is already registered. Please sign in.");
+      else {
+        errorShow("Failed to create account. Please try again.");
+      }
     } finally {
       setLoader(false);
       setUpdate(false);
@@ -52,7 +55,6 @@ export const useAuth = () => {
     setLoader(true);
     setUpdate(true);
     try {
-
       const { data } = await api.post("/auth/logout");
 
       if (data?.success) {

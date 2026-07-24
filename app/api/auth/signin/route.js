@@ -3,7 +3,7 @@ import { NextResponse as res } from "next/server";
 import bcrypt from "bcrypt";
 import generateToken, { accessCookieOptions } from "@/lib/generateToken";
 import connectDB from "@/db/database";
-import { sendEmail } from "@/lib/sendEmail";
+import { loginEmail, sendEmail } from "@/lib/sendEmail";
 
 export const POST = async (req) => {
   await connectDB();
@@ -21,43 +21,54 @@ export const POST = async (req) => {
     const isUser = await userModel.findOne({ email: email });
 
     if (!isUser) {
-      return res.json({
-        message: "Invalid credentials",
-        success: false,
-      });
+      return res.json(
+        {
+          message: "Invalid credentials",
+          success: false,
+        },
+        { status: 401 },
+      );
     }
 
     const isPassword = await bcrypt.compare(password, isUser.password);
 
     if (!isPassword) {
-      return res.json({
-        message: "Invalid credentials",
-        success: false,
-      });
+      return res.json(
+        {
+          message: "Invalid credentials",
+          success: false,
+        },
+        { status: 401 },
+      );
     }
 
     const accessToken = generateToken(isUser._id);
 
-    const response = res.json({
-      message: "User login successfully",
-      user: {
-        username: isUser.username,
-        email: isUser.email,
-        password: isUser.password,
+    const response = res.json(
+      {
+        message: "User login successfully",
+        user: {
+          username: isUser.username,
+          email: isUser.email,
+          password: isUser.password,
+        },
       },
-      status: 200,
-    });
+      { status: 200 },
+    );
 
-    await sendEmail(isUser?.email, isUser?.username);
+    await loginEmail(isUser?.email, isUser?.username);
 
     response.cookies.set("accessToken", accessToken, accessCookieOptions);
 
     return response;
   } catch (err) {
     console.log(err.message);
-    return res.json({
-      message: "Internal server error",
-      success: false,
-    });
+    return res.json(
+      {
+        message: "Internal server error",
+        success: false,
+      },
+      { status: 500 },
+    );
   }
 };
