@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowLeftRight, BookOpenText, LoaderCircle, Search, SearchX, Trash } from 'lucide-react'
+import { ArrowLeftRight, BookOpenText, Check, Copy, LoaderCircle, Search, SearchX, Trash, Volume2 } from 'lucide-react'
 import React, { useState } from 'react'
 import { everyWearCon } from '@/contexts/everyWear'
 import { api } from '@/lib/axios'
@@ -13,6 +13,10 @@ const SynonymsAntonymsPage = () => {
     const [loader, setLoader] = useState(false)
     const [word, setWord] = useState('')
     const [error, setError] = useState(false)
+    const [speechLoader, setSpeechLoader] = useState(false)
+    const [copied, setCopied] = useState(false)
+    const [synCopied, setSynCopied] = useState(false)
+    const [antCopied, setAntCopied] = useState(false)
     
     const searchWord = async() => {
         if(!word?.trim()) return errorShow('Please enter a word.')
@@ -39,12 +43,62 @@ const SynonymsAntonymsPage = () => {
         setSynDataUpdate(true)
     }
 
+    const textToSpeech = async(word) => {
+        if(!word) resourceUsage
+        try{
+        setSpeechLoader(true)
+            const {data} = await api.post(
+            "/groq/text-to-speech",
+            { word },
+            {
+                responseType: "blob",
+            }
+            );
+
+            const url = URL.createObjectURL(data);
+
+            const audio = new Audio(url);
+
+            await audio.play();
+
+            audio.onended = () => {
+            URL.revokeObjectURL(url);
+            };
+        }
+        catch(err){
+            console.error(err.message);
+        }
+        finally{
+        setSpeechLoader(false)
+        }
+    }
+
     const enterKeyPress = (e) => {
         if(e.key === 'Enter' && !e.shiftKey){
             e.preventDefault()
             searchWord()
         }
     }
+
+    const copyText = (word) => {
+        setCopied(true)
+        window.navigator.clipboard.writeText(word)
+        setTimeout(() => setCopied(false), 1000)
+    }
+
+    const copySynandAnt = (word, type) => {
+        type === 'syn' ? 
+        setSynCopied(true) : setAntCopied(true)
+
+       const text = word.map(words => words).join(", ")
+       
+        window.navigator.clipboard.writeText(text)
+        setTimeout(() =>  type === 'syn' ? 
+        setSynCopied(false) : setAntCopied(false), 
+        1000)
+    }
+
+
 
   return (
     <div className='w-full min-h-screen bg-white pb-5'>
@@ -94,30 +148,33 @@ const SynonymsAntonymsPage = () => {
 
    {
     synData?.word ? (
-        <div className="max-w-5xl mx-auto rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm p-8 ">
+        <div className="max-w-5xl mx-auto rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm ">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-            <ArrowLeftRight className="w-8 h-8 text-blue-600" />
-
-            <div>
-            <h2 className="text-3xl font-bold">{synData?.word}</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-                {synData?.partOfSpeech}
-            </p>
+        <div className="flex items-center gap-5 mb-6 border-b h-25 px-8">
+            <div onClick={() => textToSpeech(synData?.word)} className='bg-gray-100 w-15 h-15 flex justify-center items-center rounded-lg border border-gray-200 cursor-pointer'>
+            {
+            speechLoader ? 
+                <LoaderCircle className="w-8 h-8 text-blue-600 animate-spin" /> :
+                <Volume2 className="w-8 h-8 text-blue-600" />
+            }
             </div>
-        </div>
 
-        {/* Meaning */}
-        <div className="mb-8">
-            <h3 className="font-semibold text-lg mb-2">Meaning</h3>
+            <div className='flex flex-col gap-2'>
+                <div className='flex justify-center items-center gap-5'>
+                    <h2 className="text-3xl font-semibold">{synData?.word}</h2>
+                     <span className='text-indigo-800 text-sm font-semibold bg-gray-100 px-2 py-1 rounded-3xl'>
+                        {synData?.partOfSpeech}
+                    </span>
+                </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {synData?.meaning}
+                    </p>
+            </div>
+            </div>
 
-            <p className="text-gray-700 dark:text-gray-300">
-            {synData?.meaning}
-            </p>
-        </div>
 
         {/* Synonyms & Antonyms */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 p-4">
             {/* Synonyms */}
             <div>
             <h3 className="text-xl font-semibold text-green-600 mb-4">
@@ -128,11 +185,23 @@ const SynonymsAntonymsPage = () => {
                 {synData?.synonyms?.map((word) => (
                 <span
                     key={word}
-                    className="px-4 py-2 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+                    className="px-4 py-2 rounded-sm border border-green-200 bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
                 >
                     {word}
                 </span>
                 ))}
+                <button onClick={() => copySynandAnt(synData?.synonyms, 'syn')} className='w-full inline-flex mt-5 text-green-500 border border-green-500 px-4 py-2 rounded-md justify-center items-center gap-2 cursor-pointer'>
+                     {
+                    synCopied ? <Check /> :
+                    <>
+                        <Copy size={15} />
+                        <span>
+                        Copy Synonyms
+                        </span>
+                    </>
+                }
+                </button>
+
             </div>
             </div>
 
@@ -146,22 +215,47 @@ const SynonymsAntonymsPage = () => {
                 {synData?.antonyms?.map((word) => (
                 <span
                     key={word}
-                    className="px-4 py-2 rounded-full bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
+                    className="px-4 py-2 rounded-sm border border-red-200 bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
                 >
                     {word}
                 </span>
                 ))}
+                 <button onClick={() => copySynandAnt(synData?.antonyms)} className='w-full inline-flex mt-5 text-red-500 border border-red-500 px-4 py-2 rounded-md justify-center items-center gap-2 cursor-pointer'>
+                     {
+                    antCopied ? <Check /> :
+                    <>
+                        <Copy size={15} />
+                        <span>
+                        Copy Antonyms
+                        </span>
+                    </>
+                }
+                </button>
             </div>
             </div>
         </div>
 
         {/* Example */}
-        <div className="mt-10 border-t pt-6 dark:border-slate-700">
+        <div className="mt-10 border-t pt-6 dark:border-slate-700 p-5 flex justify-between items-center">
+            <div>
             <h3 className="font-semibold text-lg mb-2">Example</h3>
 
             <blockquote className="italic text-gray-600 dark:text-gray-300 border-l-4 border-blue-500 pl-4">
             &quot;{synData?.example}&quot;
             </blockquote>
+            </div>
+
+            <button onClick={() => copyText(synData?.example)} className='px-4 py-2 flex justify-center items-center gap-2 bg-white text-indigo-500 shadow rounded-sm text-sm cursor-pointer'>
+                {
+                    copied ? <Check /> :
+                    <>
+                        <Copy size={15} />
+                        <span>
+                        Copy Sentence
+                        </span>
+                    </>
+                }
+            </button>
         </div>
         </div>
     ) :
