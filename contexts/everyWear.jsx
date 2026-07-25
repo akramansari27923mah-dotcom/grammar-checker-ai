@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { api } from "@/lib/axios";
+import { getFromLocalStorage } from "@/lib/storageFunctions";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, createContext, useEffect, useState } from "react";
 
@@ -15,6 +17,8 @@ export const AuthProvider = ({ children }) => {
   const [saved, setSaved] = useState([]);
   const [saveLoader, setSaveLoader] = useState(false);
   const [checkUserLoader, setCheckUserLoader] = useState(false);
+  const [synData, setSynData] = useState([])
+  const [synDataUpdate, setSynDataUpdate] = useState(false)
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -50,6 +54,11 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, [update]);
 
+  useEffect(() => {
+     const data = getFromLocalStorage('word')
+     setSynData(data)
+  }, [synDataUpdate])
+
   return (
     <AuthContext.Provider
       value={{
@@ -68,6 +77,9 @@ export const AuthProvider = ({ children }) => {
         saveLoader,
         setSaveLoader,
         checkUserLoader,
+        synData,
+        setSynData,
+        synDataUpdate, setSynDataUpdate
       }}
     >
       {children}

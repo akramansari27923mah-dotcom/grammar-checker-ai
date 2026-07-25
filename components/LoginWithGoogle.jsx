@@ -16,10 +16,10 @@ const LoginWithGoogle = () => {
 
   const loginWithGoogleFun = async () => {
     try {
-      setLoader(true);
-      setUpdate(true)
+      
       const googleProvider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, googleProvider);
+      
       const { displayName, email, photoURL, uid } = result.user;
 
       const payLoad = {
@@ -28,7 +28,8 @@ const LoginWithGoogle = () => {
         image: photoURL,
         googleId: uid,
       };
-
+      setLoader(true);
+      setUpdate(true)
       const { data } = await api.post("/auth/google", payLoad);
       if (data?.success) {
         route.push("/");

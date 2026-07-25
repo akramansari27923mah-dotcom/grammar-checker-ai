@@ -30,10 +30,19 @@ export default function MainLayout({ children }) {
 
   if(checkUserLoader){
     return(
-      <div className="flex justify-center items-center h-screen text-xl italic gap-2">
-        <LoaderCircle className="animate-spin" />
-        Loading...
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md">
+      <div className="flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-white/10 px-10 py-8 shadow-2xl backdrop-blur-xl">
+        <LoaderCircle className="h-12 w-12 animate-spin text-blue-500" />
+        <div className="space-y-1 text-center">
+          <p className="text-lg font-semibold text-white">
+            Loading...
+          </p>
+          <p className="text-sm text-gray-300">
+            Please wait a moment
+          </p>
+        </div>
       </div>
+    </div>
     )
   }
 

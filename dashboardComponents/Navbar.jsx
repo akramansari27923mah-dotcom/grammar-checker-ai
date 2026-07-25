@@ -3,6 +3,7 @@
 import {
   ArrowLeftToLine,
   ArrowRightToLine,
+  BookOpenText,
   History,
   House,
   LayoutDashboard,
@@ -71,6 +72,14 @@ const Navbar = () => {
               >
                 <Pencil />
                 <span className="font-semibold">Grammar Checker</span>
+              </Link>
+
+              <Link
+                href="/dashboard/Synonyms&Antonyms"
+                className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap"
+              >
+                <BookOpenText  />
+                <span className="font-semibold">Syn & Ant</span>
               </Link>
 
               <Link

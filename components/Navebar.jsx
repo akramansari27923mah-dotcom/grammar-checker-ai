@@ -149,7 +149,7 @@ const Navbar = () => {
               Dashboard
             </Link>
 
-
+            
             {user ? (
              <div>
                 <div onClick={() => setAcountDilog(!accoutDilog)} className="w-12 h-12 rounded-full overflow-hidden flex justify-center items-center uppercase bg-gray-100 cursor-pointer">
@@ -171,7 +171,7 @@ const Navbar = () => {
                 </div>
 
               <div
-                className="absolute top-16 right-0  overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+                className="absolute top-18 right-0  overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
                 style={{width: accoutDilog ? "0px" : "350px"}}
               >
                 <div className="bg-linear-to-r from-blue-600 to-cyan-500 p-5">
@@ -216,7 +216,7 @@ const Navbar = () => {
 
                   <div className="border-t border-slate-200 dark:border-slate-700 pt-2">
                     <button onClick={handleLogout} className="mt-2 flex w-full items-center justify-between rounded-xl p-3 text-red-500 transition hover:bg-red-50 dark:hover:bg-red-900/20">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 cursor-pointer">
                         <LogOut size={18} />
                         <span>Logout</span>
                       </div>

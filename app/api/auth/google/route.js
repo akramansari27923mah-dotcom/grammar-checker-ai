@@ -1,6 +1,6 @@
 import connectDB from "@/db/database";
 import generateToken, { accessCookieOptions } from "@/lib/generateToken";
-import { sendEmail, signInWithGoogleEmail } from "@/lib/sendEmail";
+import { signInWithGoogleEmail } from "@/lib/sendEmail";
 import { userModel } from "@/schemas/user.model.schema";
 import { NextResponse as res } from "next/server";
 
