@@ -4,7 +4,7 @@ import { BadgeCheck, Copy, Heart, LoaderCircle, RotateCw, Share, Sparkles, Trash
 import React, { useState } from 'react'
 import { everyWearCon } from '@/contexts/everyWear'
 import { api } from '@/lib/axios'
-import { errorShow } from '@/lib/toast'
+import { errorShow, successShow } from '@/lib/toast'
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { removeFromSessionStorage, saveInSessionStorage } from '@/lib/storageFunctions'
@@ -18,7 +18,7 @@ const SentenceWriterPage = () => {
     const [error, setError] = useState(false)
     const [share, setShare] = useState(false)
     const [copied, setCopied] = useState('')
-    
+     
     const rewriteSentence = async() => {
         try{
             if(!sentence.trim()) return errorShow('Please enter your sentence!')
@@ -35,6 +35,11 @@ const SentenceWriterPage = () => {
             setLoader(false)
             setRewriteUpdate(true)
         }
+    }
+
+    const copySentenceFun = (sen) => {
+        window.navigator.clipboard.writeText(sen)
+        successShow('Sentence Copied!')
     }
     
 
@@ -213,7 +218,7 @@ const SentenceWriterPage = () => {
 
             {/* Footer */}
             <div className="mt-6 flex items-center justify-between gap-3 border-t pt-4">
-                <button className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100">
+                <button onClick={() => copySentenceFun(item?.sentence)} className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100">
                 <Copy size={16} />
                 Copy
                 </button>
