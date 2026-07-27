@@ -2,7 +2,7 @@
 "use client";
 
 import { api } from "@/lib/axios";
-import { getFromLocalStorage } from "@/lib/storageFunctions";
+import { getFromLocalStorage, getFromSessionStorage } from "@/lib/storageFunctions";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, createContext, useEffect, useState } from "react";
 
@@ -19,6 +19,8 @@ export const AuthProvider = ({ children }) => {
   const [checkUserLoader, setCheckUserLoader] = useState(false);
   const [synData, setSynData] = useState([])
   const [synDataUpdate, setSynDataUpdate] = useState(false)
+  const [rewriteUpdate, setRewriteUpdate] = useState(false)
+  const [rewrite, setRewrite] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -59,6 +61,11 @@ export const AuthProvider = ({ children }) => {
      setSynData(data)
   }, [synDataUpdate])
 
+  useEffect(() => {
+     const data = getFromSessionStorage('rewrite')
+     setRewrite(data)
+  }, [rewriteUpdate])
+
   return (
     <AuthContext.Provider
       value={{
@@ -79,7 +86,11 @@ export const AuthProvider = ({ children }) => {
         checkUserLoader,
         synData,
         setSynData,
-        synDataUpdate, setSynDataUpdate
+        synDataUpdate, 
+        setSynDataUpdate,
+        setRewrite,
+        rewrite,
+        setRewriteUpdate
       }}
     >
       {children}

@@ -26,14 +26,8 @@ const Chat2 = () => {
   const [inputBoxOpned, setExtInputBoxOpned] = useState(false);
   const [view, setView] = useState("");
 
-  useEffect(() => {
-    const view = localStorage.getItem("view");
-    setView(view);
-  }, []);
-
   const getResult = async (e) => {
     if (e) e.preventDefault();
-    localStorage.removeItem("view");
     if (!prompt.trim()) return errorShow("Please Provide Sentence to AI");
     setLoader(true);
     try {
@@ -50,8 +44,10 @@ const Chat2 = () => {
 
   useEffect(() => {
     const fetchLocal = localStorage.getItem("result");
-    setResult(JSON.parse(fetchLocal));
-  }, [result]);
+    if(fetchLocal){
+      setResult(JSON.parse(fetchLocal));
+    }
+  }, []);
 
   const clearResult = () => {
     localStorage.removeItem("result");

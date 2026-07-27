@@ -1,4 +1,3 @@
-import Chat from '@/components/Chat'
 import Chat2 from '@/components/Chat2'
 import React from 'react'
 

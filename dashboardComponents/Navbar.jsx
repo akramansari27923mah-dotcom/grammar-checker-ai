@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   Pencil,
   Save,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -80,6 +81,14 @@ const Navbar = () => {
               >
                 <BookOpenText  />
                 <span className="font-semibold">Syn & Ant</span>
+              </Link>
+
+              <Link
+                href="/dashboard/sentence-rewriter"
+                className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap"
+              >
+                <Sparkles  />
+                <span className="font-semibold">Sentence Rewriter</span>
               </Link>
 
               <Link

@@ -1,42 +1,14 @@
 "use client";
 
-import { successShow } from "@/lib/toast";
 import { Copy } from "lucide-react";
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
+import { shareOnLinkedin } from "@/lib/share";
+import { shareTwitter } from "@/lib/share";
+import { shareOnWhatsapp } from "@/lib/share";
 
 export default function GrammarResult({ data, copied, copyResult }) {
   
-
-  const shareOnLinkedin = async(text) => {
-   const content = text
-
-  await navigator.clipboard.writeText(content);
-
- successShow("Content copied! Redirecting to LinkedIn...");
-
-  setTimeout(() => {
-    window.open(
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.origin)}`,
-      "_blank"
-    );
-  }, 2000)
-  }
-
-  const shareTwitter = (correctedText) => {
-  window.open(
-    `https://twitter.com/intent/tweet?text=${encodeURIComponent(correctedText)}`
-  );
-}
-
-
-const shareOnWhatsapp = (correctedText) => {
-  window.open(
-`https://wa.me/?text=${encodeURIComponent(correctedText)}`
-);
-};
-
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4">
