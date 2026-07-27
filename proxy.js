@@ -1,22 +1,15 @@
-import { NextResponse as res } from "next/server";
+import { NextResponse } from "next/server";
+
+export function proxy(req) {
+  const accessToken = req.cookies.get("accessToken");
+
+  if (!accessToken?.value) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: ["/grammar-checker", "/dashboard/:path*"],
 };
-
-export async function proxy(req) {
-  try {
-    const accessToken = await req.cookies.get("accessToken");
-    
-    if (!accessToken?.value) {
-      return res.redirect(new URL("/login", req.url));
-    }
-
-    return res.next();
-  } catch (err) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid token",
-    });
-  }
-}
