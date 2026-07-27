@@ -7,8 +7,8 @@ export const config = {
 export async function proxy(req) {
   try {
     const accessToken = await req.cookies.get("accessToken");
-
-    if (!accessToken) {
+    
+    if (!accessToken.value) {
       return res.redirect(new URL("/login", req.url));
     }
 
