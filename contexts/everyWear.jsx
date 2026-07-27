@@ -3,6 +3,7 @@
 
 import { api } from "@/lib/axios";
 import { getFromLocalStorage, getFromSessionStorage } from "@/lib/storageFunctions";
+import { useRouter } from "next/navigation";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, createContext, useEffect, useState } from "react";
 
@@ -21,6 +22,7 @@ export const AuthProvider = ({ children }) => {
   const [synDataUpdate, setSynDataUpdate] = useState(false)
   const [rewriteUpdate, setRewriteUpdate] = useState(false)
   const [rewrite, setRewrite] = useState([])
+  const router = useRouter()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -28,7 +30,9 @@ export const AuthProvider = ({ children }) => {
       try {
         const { data } = await api.get("/auth/getme");
         setUser(data?.user);
-        
+        if(!data?.user){
+          router.push('/login')
+        }
         localStorage.setItem("userId", data?.user?.id);
       } catch (err) {
         console.log(err.message);
