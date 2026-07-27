@@ -30,9 +30,6 @@ export const AuthProvider = ({ children }) => {
       try {
         const { data } = await api.get("/auth/getme");
         setUser(data?.user);
-        if(!data?.user){
-          router.push('/login')
-        }
         localStorage.setItem("userId", data?.user?.id);
       } catch (err) {
         console.log(err.message);
