@@ -92,6 +92,14 @@ const Navbar = () => {
               </Link>
 
               <Link
+                href="/dashboard/explain-grammer-mistakes"
+                className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap"
+              >
+                <Sparkles  />
+                <span className="font-semibold">Explain Mistakes</span>
+              </Link>
+
+              <Link
                 href="/dashboard/history"
                 className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg"
               >

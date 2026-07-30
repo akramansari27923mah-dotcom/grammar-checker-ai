@@ -22,6 +22,8 @@ export const AuthProvider = ({ children }) => {
   const [synDataUpdate, setSynDataUpdate] = useState(false)
   const [rewriteUpdate, setRewriteUpdate] = useState(false)
   const [rewrite, setRewrite] = useState([])
+  const [explainGrammer, setExplainGrammer] = useState(null)
+  const [explainGrammerUpdate, setExplainGrammerUpdate] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -67,6 +69,11 @@ export const AuthProvider = ({ children }) => {
      setRewrite(data)
   }, [rewriteUpdate])
 
+  useEffect(() => {
+    const data = getFromSessionStorage('explainGrammer')
+    setExplainGrammer(data)
+  }, [explainGrammerUpdate])
+
   return (
     <AuthContext.Provider
       value={{
@@ -91,7 +98,10 @@ export const AuthProvider = ({ children }) => {
         setSynDataUpdate,
         setRewrite,
         rewrite,
-        setRewriteUpdate
+        setRewriteUpdate,
+        explainGrammer,
+        setExplainGrammer,
+        setExplainGrammerUpdate
       }}
     >
       {children}

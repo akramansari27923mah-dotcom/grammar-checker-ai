@@ -1,46 +1,39 @@
 export const data = {
-    "message": "generated successfully",
-    "success": true,
-    "data": {
-        "success": true,
-        "originalSentence": "I am good at coding",
-        "rewrites": [
-            {
-                "tone": "Professional",
-                "sentence": "I possess a high level of proficiency in coding."
-            },
-            {
-                "tone": "Formal",
-                "sentence": "I have a strong aptitude for coding and am well-versed in its principles."
-            },
-            {
-                "tone": "Friendly",
-                "sentence": "I'm really passionate about coding and have gotten pretty good at it."
-            },
-            {
-                "tone": "Casual",
-                "sentence": "I'm decent at coding, it's something I enjoy doing."
-            },
-            {
-                "tone": "Shorter",
-                "sentence": "I'm good at coding."
-            },
-            {
-                "tone": "Longer",
-                "sentence": "I have spent a significant amount of time honing my skills and am now confident in my ability to code efficiently and effectively."
-            },
-            {
-                "tone": "Polite",
-                "sentence": "I'm fairly skilled at coding, if I do say so myself, and I'm always happy to help others with their coding needs."
-            },
-            {
-                "tone": "Confident",
-                "sentence": "I'm an expert coder with a deep understanding of programming languages and principles."
-            },
-            {
-                "tone": "Academic",
-                "sentence": "My proficiency in coding has been developed through rigorous practice and dedication to the field of computer science."
-            }
-        ]
-    }
-}
+  message: "Reply successfully",
+  success: true,
+  result: {
+    success: true,
+    originalSentence: "i read book everyday",
+    correctedSentence: "I read a book every day.",
+    overallFeedback: "Good effort, but there are a few mistakes to correct.",
+    mistakes: [
+      {
+        id: 1,
+        type: "Capitalization",
+        wrongText: "i",
+        correctText: "I",
+        explanation:
+          "The first word in a sentence must start with a capital letter.",
+        rule: "Always capitalize the first word in a sentence.",
+      },
+      {
+        id: 2,
+        type: "Article",
+        wrongText: "book",
+        correctText: "a book",
+        explanation:
+          "We use 'a' before a singular noun when we are talking about any book, not a specific one.",
+        rule: "Use 'a' before singular nouns that are not specific.",
+      },
+      {
+        id: 3,
+        type: "Punctuation",
+        wrongText: "everyday",
+        correctText: "every day",
+        explanation:
+          "We use 'every day' with a space to mean each day, not 'everyday' which means done or used every day.",
+        rule: "Use 'every day' with a space to mean each day.",
+      },
+    ],
+  },
+};

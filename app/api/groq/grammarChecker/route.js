@@ -5,13 +5,12 @@ import { historyModel } from "@/schemas/history.model.schema";
 import jwt from "jsonwebtoken";
 import { totalChecksModel } from "@/schemas/totalChecks.model.schema";
 import { systemPrompt } from "@/lib/groqPrompt";
+import { config } from "@/lib/config";
 export const POST = async (req) => {
   try {
     const body = await req.json();
     const accessToken = await req.cookies.get("accessToken");
     const { prompt, support } = body;
-
-    console.log(prompt);
     
 
     if (!prompt) {
@@ -27,7 +26,7 @@ export const POST = async (req) => {
 
     const decoded = jwt.verify(
       accessToken?.value,
-      process.env.JWT_ACCESS_SECRET,
+      config.JWT_ACCESS_SECRET,
     );
 
     await groqModel.create({

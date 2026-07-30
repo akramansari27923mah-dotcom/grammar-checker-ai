@@ -46,16 +46,16 @@ const SentenceWriterPage = () => {
 
   return (
     <div className='w-full min-h-screen'>
-        <nav className="flex items-center justify-between h-20 px-8 bg-linear-to-r from-white via-indigo-50 to-purple-50 border-b border-slate-200">
+        <nav className="flex items-center justify-between h-20 md:px-8 px-2 bg-linear-to-r from-white via-indigo-50 to-purple-50 border-b border-slate-200">
         <div className="flex items-center gap-4">
             
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/20">
+            <div className="flex md:h-14 h-12 md:w-14 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/20">
             <Sparkles className="text-white" size={28} />
             </div>
 
             <div>
             <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-slate-800">
+                <h1 className="md:text-2xl text-nowrap font-bold text-slate-800">
                 Sentence Rewriter
                 </h1>
 
@@ -64,7 +64,7 @@ const SentenceWriterPage = () => {
                 </span>
             </div>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-500 hidden md:block">
                 Rewrite your sentences in different tones and styles with the power of AI.
             </p>
             </div>
@@ -78,7 +78,7 @@ const SentenceWriterPage = () => {
             </span>
         </div>
 
-        <button onClick={() => {removeFromSessionStorage('rewrite'),setRewrite([]), setRewriteUpdate(true)}} className="hidden md:flex items-center gap-2 rounded-full border border-indigo-200 bg-red-500 px-4 py-2 shadow-sm text-white cursor-pointer">
+        <button onClick={() => {removeFromSessionStorage('rewrite'),setRewrite([]), setRewriteUpdate(true)}} className="flex items-center gap-2 rounded-full border border-indigo-200 bg-red-500 px-4 py-2 shadow-sm text-white cursor-pointer">
             <Trash size={18} />
             <span className="text-sm font-medium">
             Clean Result
