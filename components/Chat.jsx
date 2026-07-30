@@ -13,8 +13,7 @@ const Chat = () => {
   const [loader, setLoader] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const messageRef = useRef(null);
-  
-  
+
   const sendMessage = async () => {
     const inputValue = prompt.trim();
 
@@ -24,13 +23,12 @@ const Chat = () => {
     setLoader(true);
     try {
       const res = await handleChat(inputValue, setLoader);
-      
 
       setMessage((prev) => [
         ...prev,
         {
           role: "ai",
-          content:res,
+          content: res,
         },
       ]);
     } catch (err) {
@@ -66,8 +64,7 @@ const Chat = () => {
       {!showChat && (
         <div
           className="fixed bottom-5 right-5 z-50"
-          onClick={() => setShowChat(true)}
-        >
+          onClick={() => setShowChat(true)}>
           <Image
             src="/robot.png"
             width={60}
@@ -81,8 +78,7 @@ const Chat = () => {
       <div
         className={`fixed top-0 right-0 z-50 h-screen bg-white shadow-2xl border-l border-gray-200 transition-transform duration-300
       ${showChat ? "translate-x-0" : "translate-x-full"}
-      w-full md:w-105`}
-      >
+      w-full md:w-105`}>
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex justify-between items-center px-4 py-3 border-b bg-white">
@@ -111,8 +107,7 @@ const Chat = () => {
 
               <button
                 onClick={() => setShowChat(false)}
-                className="p-2 rounded-lg border hover:bg-gray-100 cursor-pointer"
-              >
+                className="p-2 rounded-lg border hover:bg-gray-100 cursor-pointer">
                 <ChevronRight size={18} />
               </button>
             </div>
@@ -125,16 +120,14 @@ const Chat = () => {
                 key={ind}
                 className={`flex ${
                   msg?.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
+                }`}>
                 <div
                   className={`max-w-[85%] px-4 py-1 rounded-2xl text-sm md:text-base whitespace-pre-wrap shadow-sm
                 ${
                   msg?.role === "user"
                     ? "bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-br-md"
                     : "bg-white text-gray-800 rounded-bl-md border"
-                }`}
-                >
+                }`}>
                   <ChatMarkdownSupport
                     content={
                       typeof msg?.content === "string"
@@ -171,8 +164,7 @@ const Chat = () => {
               <button
                 onClick={sendMessage}
                 disabled={!prompt.trim()}
-                className="h-12 w-12 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 text-white flex items-center justify-center shadow-lg hover:scale-105 transition disabled:opacity-50 cursor-pointer"
-              >
+                className="h-12 w-12 rounded-xl bg-linear-to-br from-emerald-400 via-green-500 to-emerald-700 text-white flex items-center justify-center shadow-lg hover:scale-105 transition disabled:opacity-50 cursor-pointer">
                 <Send size={18} />
               </button>
             </div>

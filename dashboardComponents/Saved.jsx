@@ -99,8 +99,7 @@ const Saved = () => {
                 <div className="flex justify-end gap-3 mt-2">
                   <button
                     onClick={() => setDeleteModal(false)}
-                    className="px-5 py-2.5 rounded-xl border border-gray-300 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
-                  >
+                    className="px-5 py-2.5 rounded-xl border border-gray-300 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-all cursor-pointer">
                     Cancel
                   </button>
 
@@ -108,8 +107,7 @@ const Saved = () => {
                     onClick={() => {
                       (handleDelete(cardId), setDeleteModal(false));
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
-                  >
+                    className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-medium flex items-center gap-2 transition-all active:scale-95 cursor-pointer">
                     <Trash size={18} />
                     Delete
                   </button>
@@ -121,8 +119,7 @@ const Saved = () => {
 
         <div
           className="absolute right-5 top-2 cursor-pointer flex justify-center items-center gap-2 hover:scale-105 transition-all duration-300"
-          onClick={() => setUpdate(!update)}
-        >
+          onClick={() => setUpdate(!update)}>
           <RefreshCcw size={16} />
           <span>Refresh</span>
         </div>
@@ -130,8 +127,7 @@ const Saved = () => {
         {saved.map((item) => (
           <div
             key={item._id}
-            className="group bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-          >
+            className="group bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             {/* Top Section */}
             <div className="flex items-start justify-between mb-4">
               {/* User Icon */}
@@ -163,15 +159,13 @@ const Saved = () => {
             <div className="flex items-center gap-3 mt-5">
               <button
                 onClick={() => view(item?.replyFromAi)}
-                className="flex-1 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all duration-200 text-white text-sm cursor-pointer font-medium py-2.5 rounded-2xl"
-              >
+                className="flex-1 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all duration-200 text-white text-sm cursor-pointer font-medium py-2.5 rounded-2xl">
                 View
               </button>
 
               <button
                 onClick={() => copyResult(item?.replyFromAi)}
-                className="flex-1 bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 active:scale-95 transition-all duration-200 text-gray-700 dark:text-gray-300 text-sm cursor-pointer font-medium py-2.5 rounded-2xl"
-              >
+                className="flex-1 bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 active:scale-95 transition-all duration-200 text-gray-700 dark:text-gray-300 text-sm cursor-pointer font-medium py-2.5 rounded-2xl">
                 Copy
               </button>
 
@@ -179,8 +173,7 @@ const Saved = () => {
                 onClick={() => {
                   (setCardId(item._id), setDeleteModal(true));
                 }}
-                className="flex-1 bg-red-600 dark:bg-slate-800 hover:bg-red-400 dark:hover:bg-slate-700 active:scale-95 transition-all duration-200 text-white dark:text-gray-300 text-sm cursor-pointer font-medium py-2.5 rounded-2xl flex justify-center items-center gap-2"
-              >
+                className="flex-1 bg-red-600 dark:bg-slate-800 hover:bg-red-400 dark:hover:bg-slate-700 active:scale-95 transition-all duration-200 text-white dark:text-gray-300 text-sm cursor-pointer font-medium py-2.5 rounded-2xl flex justify-center items-center gap-2">
                 <Trash size={18} />
                 <span>Delete</span>
               </button>

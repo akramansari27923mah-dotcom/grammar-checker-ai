@@ -34,8 +34,7 @@ const GetStarted = () => {
           <div className="flex flex-col items-center gap-4">
             <Link
               href="/grammar-checker"
-              className="group flex items-center gap-3 bg-white text-blue-600 font-semibold px-7 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-            >
+              className="group flex items-center gap-3 bg-white text-blue-600 font-semibold px-7 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
               <span>Get Started for Free</span>
 
               <ArrowRight

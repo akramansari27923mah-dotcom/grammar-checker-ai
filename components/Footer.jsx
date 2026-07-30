@@ -13,16 +13,16 @@ const Footer = () => {
     try {
       if (!email.trim()) return;
       setLoader(true);
-      setEmail('')
+      setEmail("");
       const stayUpdate = email;
-      const { data } = await api.post("/stayUpdate", {stayUpdate});
+      const { data } = await api.post("/stayUpdate", { stayUpdate });
       if (data?.success) {
         successShow("Subscribed Successfully");
       }
     } catch (err) {
       console.log(err);
-      if(err.response.status === 400){
-        errorShow('Email already exist')
+      if (err.response.status === 400) {
+        errorShow("Email already exist");
       }
     } finally {
       setLoader(false);
@@ -57,8 +57,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/grammar-checker"
-                  className="hover:text-white transition"
-                >
+                  className="hover:text-white transition">
                   Grammar Checker
                 </Link>
               </li>
@@ -82,17 +81,22 @@ const Footer = () => {
 
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/privacy" target="_blank" className="hover:text-white transition">
+                <Link
+                  href="/privacy"
+                  target="_blank"
+                  className="hover:text-white transition">
                   Privacy Policy
                 </Link>
               </li>
 
               <li>
-                <Link href="/terms" target="_blank" className="hover:text-white transition">
+                <Link
+                  href="/terms"
+                  target="_blank"
+                  className="hover:text-white transition">
                   Terms & Conditions
                 </Link>
               </li>
-
             </ul>
           </div>
 
@@ -116,8 +120,7 @@ const Footer = () => {
 
               <button
                 onClick={subscribe}
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 transition"
-              >
+                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 transition">
                 {loader ? (
                   <LoaderCircle className="animate-spin" />
                 ) : (
@@ -132,11 +135,17 @@ const Footer = () => {
           <p>© 2026 GrammerAI. All rights reserved.</p>
 
           <div className="flex items-center gap-5">
-            <Link href="/privacy" target="_blank" className="hover:text-white transition">
+            <Link
+              href="/privacy"
+              target="_blank"
+              className="hover:text-white transition">
               Privacy
             </Link>
 
-            <Link href="/terms" target="_blank" className="hover:text-white transition">
+            <Link
+              href="/terms"
+              target="_blank"
+              className="hover:text-white transition">
               Terms
             </Link>
           </div>

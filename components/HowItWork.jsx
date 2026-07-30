@@ -37,8 +37,7 @@ const HowItWork = () => {
             return (
               <div
                 key={ind}
-                className="group w-72 rounded-2xl p-6 flex flex-col justify-center items-center  hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-              >
+                className="group w-72 rounded-2xl p-6 flex flex-col justify-center items-center  hover:-translate-y-2 transition-all duration-300 cursor-pointer">
                 <div className="w-25 h-25 flex items-center justify-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                   <Icon size={28} />
                 </div>

@@ -23,9 +23,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              2. Our Services
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">2. Our Services</h2>
             <p className="leading-7">
               GrammarCheckerAI provides AI-powered grammar correction, spelling
               checks, writing improvements, readability suggestions, and other
@@ -49,9 +47,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              4. User Content
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">4. User Content</h2>
             <p className="leading-7">
               You retain ownership of any text you submit. By using our service,
               you grant us permission to process your content solely for
@@ -72,9 +68,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              6. AI Disclaimer
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">6. AI Disclaimer</h2>
             <p className="leading-7">
               AI-generated suggestions are provided for informational and
               educational purposes only. You are responsible for reviewing and
@@ -99,10 +93,10 @@ export default function TermsAndConditions() {
               8. Limitation of Liability
             </h2>
             <p className="leading-7">
-              GrammarCheckerAI is provided &quot;as is&quot; without warranties of any
-              kind. We are not responsible for any direct, indirect, incidental,
-              or consequential damages arising from your use of the platform or
-              reliance on AI-generated results.
+              GrammarCheckerAI is provided &quot;as is&quot; without warranties
+              of any kind. We are not responsible for any direct, indirect,
+              incidental, or consequential damages arising from your use of the
+              platform or reliance on AI-generated results.
             </p>
           </section>
 
@@ -130,9 +124,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              11. Governing Law
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">11. Governing Law</h2>
             <p className="leading-7">
               These Terms & Conditions shall be governed and interpreted in
               accordance with the laws of your applicable jurisdiction.
@@ -140,9 +132,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              12. Contact Us
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">12. Contact Us</h2>
 
             <p className="leading-7">
               If you have any questions regarding these Terms & Conditions,

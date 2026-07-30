@@ -25,8 +25,7 @@ export default function ChatMarkdownSupport({ content }) {
                 href={href}
                 target={href?.startsWith("http") ? "_blank" : "_self"}
                 rel="noopener noreferrer"
-                className="font-medium text-emerald-600 hover:text-emerald-500 hover:underline transition-colors"
-              >
+                className="font-medium text-emerald-600 hover:text-emerald-500 hover:underline transition-colors">
                 {children}
               </a>
             );
@@ -82,8 +81,7 @@ export default function ChatMarkdownSupport({ content }) {
                         navigator.clipboard.writeText(code);
                         setCopied(true);
                         setTimeout(() => setCopied(false), 2000);
-                      }}
-                    >
+                      }}>
                       {copied ? "Copied ✓" : <Copy size={14} />}
                     </button>
                   </div>
@@ -91,8 +89,7 @@ export default function ChatMarkdownSupport({ content }) {
                   <SyntaxHighlighter
                     style={oneDark}
                     language={match[1]}
-                    PreTag="div"
-                  >
+                    PreTag="div">
                     {code}
                   </SyntaxHighlighter>
                 </div>
@@ -105,8 +102,7 @@ export default function ChatMarkdownSupport({ content }) {
               </code>
             );
           },
-        }}
-      >
+        }}>
         {content}
       </ReactMarkdown>
     </div>

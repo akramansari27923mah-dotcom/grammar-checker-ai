@@ -49,8 +49,7 @@ const DownloadResult = ({
             disabled={
               fileExt === "pdf" || fileExt === "docx" || !fileExt.trim()
             }
-            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed"
-          >
+            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed">
             Save Text
           </button>
           <button
@@ -60,8 +59,7 @@ const DownloadResult = ({
             disabled={
               fileExt === "txt" || fileExt === "docx" || !fileExt.trim()
             }
-            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed"
-          >
+            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed">
             Save Pdf
           </button>
           <button
@@ -69,8 +67,7 @@ const DownloadResult = ({
               downloadDocx(result, setExtInputBoxOpned, setFileExt, fileExt)
             }
             disabled={fileExt === "txt" || fileExt === "pdf" || !fileExt.trim()}
-            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed"
-          >
+            className="w-full bg-green-500 hover:bg-green-600 active:scale-95 transition-all duration-200 text-white font-semibold py-3 rounded-2xl shadow-lg cursor-pointer disabled:cursor-not-allowed">
             Save Docx
           </button>
         </div>

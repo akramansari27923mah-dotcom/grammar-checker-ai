@@ -11,13 +11,11 @@ export default function PrivacyPolicy() {
 
         <div className="space-y-8">
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              1. Introduction
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">1. Introduction</h2>
             <p className="leading-7">
               Welcome to <strong>GrammarCheckerAI</strong>. Your privacy is
-              important to us. This Privacy Policy explains how we collect,
-              use, and protect your information when you use our website and
+              important to us. This Privacy Policy explains how we collect, use,
+              and protect your information when you use our website and
               AI-powered grammar checking services.
             </p>
           </section>
@@ -46,9 +44,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              4. AI Processing
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">4. AI Processing</h2>
             <p className="leading-7">
               The text you submit may be processed by AI models to generate
               grammar corrections, writing suggestions, and explanations. We do
@@ -57,9 +53,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              6. Data Security
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">6. Data Security</h2>
             <p className="leading-7">
               We use reasonable technical and organizational measures to protect
               your information. However, no method of transmission over the
@@ -68,9 +62,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              7. Data Sharing
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">7. Data Sharing</h2>
             <p className="leading-7">
               We do not sell your personal information. We may share limited
               information with trusted third-party service providers that help
@@ -78,7 +70,6 @@ export default function PrivacyPolicy() {
               hosting, and AI service providers.
             </p>
           </section>
-
 
           <section>
             <h2 className="text-2xl font-semibold mb-3">
@@ -91,9 +82,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              11. Contact Us
-            </h2>
+            <h2 className="text-2xl font-semibold mb-3">11. Contact Us</h2>
             <p className="leading-7">
               If you have any questions regarding this Privacy Policy, please
               contact us at:

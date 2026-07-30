@@ -1,6 +1,5 @@
 "use client";
 
-
 import {
   Eye,
   EyeOff,
@@ -104,8 +103,7 @@ const LoginPage = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-              >
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
@@ -118,8 +116,7 @@ const LoginPage = () => {
             </div>
             <button
               type="button"
-              className="text-sm text-blue-500 hover:underline"
-            >
+              className="text-sm text-blue-500 hover:underline">
               Forgot Password?
             </button>
           </div>
@@ -145,8 +142,7 @@ const LoginPage = () => {
 
           <Link
             href="/signup"
-            className="text-blue-600 font-semibold hover:underline"
-          >
+            className="text-blue-600 font-semibold hover:underline">
             Register
           </Link>
         </div>

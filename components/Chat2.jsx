@@ -44,7 +44,7 @@ const Chat2 = () => {
 
   useEffect(() => {
     const fetchLocal = localStorage.getItem("result");
-    if(fetchLocal){
+    if (fetchLocal) {
       setResult(JSON.parse(fetchLocal));
     }
   }, []);
@@ -88,22 +88,19 @@ const Chat2 = () => {
       {/* ------------------------------------------- */}
       <div
         className=" min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50
-dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
-      >
+dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-between gap-3 mb-6">
             <Link
               href="/"
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900 text-white text-sm"
-            >
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900 text-white text-sm">
               <MoveLeft size={15} />
               Back
             </Link>
 
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900 text-white text-sm"
-            >
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900 text-white text-sm">
               <LayoutDashboard size={15} />
               Dashboard
             </Link>
@@ -113,8 +110,7 @@ dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
             {/* LEFT SIDE */}
             <form
               onSubmit={getResult}
-              className=" backdrop-blur-xl w-full sticky top-10 h-140 lg:w-105  bg-white/80  dark:bg-slate-900/70 border  border-white/20  dark:border-slate-800 rounded-3xl shadow-2xl p-6 lg:p-8"
-            >
+              className=" backdrop-blur-xl w-full sticky top-10 h-140 lg:w-105  bg-white/80  dark:bg-slate-900/70 border  border-white/20  dark:border-slate-800 rounded-3xl shadow-2xl p-6 lg:p-8">
               <div className="mb-6">
                 <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
                   Grammar Checker
@@ -153,8 +149,7 @@ dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
                 <button
                   type="button"
                   onClick={clearContent}
-                  className=" px-5 py-4 rounded-2xl border  border-gray-300  dark:border-slate-700  dark:text-white  hover:bg-gray-100  dark:hover:bg-slate-800 transition"
-                >
+                  className=" px-5 py-4 rounded-2xl border  border-gray-300  dark:border-slate-700  dark:text-white  hover:bg-gray-100  dark:hover:bg-slate-800 transition">
                   Clear
                 </button>
               </div>
@@ -194,16 +189,14 @@ dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 lg:p-8"
               <div className="flex flex-wrap gap-4 mt-6">
                 <button
                   onClick={clearResult}
-                  className=" flex items-center gap-2 px-5 py-3 rounded-xl  bg-red-50  dark:bg-slate-800 cursor-pointer text-red-600  dark:text-red-400 hover:scale-105 transition"
-                >
+                  className=" flex items-center gap-2 px-5 py-3 rounded-xl  bg-red-50  dark:bg-slate-800 cursor-pointer text-red-600  dark:text-red-400 hover:scale-105 transition">
                   <Trash size={18} />
                   Clear
                 </button>
 
                 <button
                   onClick={() => setExtInputBoxOpned(!inputBoxOpned)}
-                  className=" flex items-center gap-2 px-5 py-3 rounded-xl  bg-green-50  dark:bg-slate-800 cursor-pointer text-green-600  dark:text-green-400 hover:scale-105 transition"
-                >
+                  className=" flex items-center gap-2 px-5 py-3 rounded-xl  bg-green-50  dark:bg-slate-800 cursor-pointer text-green-600  dark:text-green-400 hover:scale-105 transition">
                   <Download size={18} />
                   Download
                 </button>

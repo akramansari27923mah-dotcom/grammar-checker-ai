@@ -2,7 +2,10 @@
 "use client";
 
 import { api } from "@/lib/axios";
-import { getFromLocalStorage, getFromSessionStorage } from "@/lib/storageFunctions";
+import {
+  getFromLocalStorage,
+  getFromSessionStorage,
+} from "@/lib/storageFunctions";
 import { useRouter } from "next/navigation";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, createContext, useEffect, useState } from "react";
@@ -18,13 +21,13 @@ export const AuthProvider = ({ children }) => {
   const [saved, setSaved] = useState([]);
   const [saveLoader, setSaveLoader] = useState(false);
   const [checkUserLoader, setCheckUserLoader] = useState(false);
-  const [synData, setSynData] = useState([])
-  const [synDataUpdate, setSynDataUpdate] = useState(false)
-  const [rewriteUpdate, setRewriteUpdate] = useState(false)
-  const [rewrite, setRewrite] = useState([])
-  const [explainGrammer, setExplainGrammer] = useState(null)
-  const [explainGrammerUpdate, setExplainGrammerUpdate] = useState(null)
-  const router = useRouter()
+  const [synData, setSynData] = useState([]);
+  const [synDataUpdate, setSynDataUpdate] = useState(false);
+  const [rewriteUpdate, setRewriteUpdate] = useState(false);
+  const [rewrite, setRewrite] = useState([]);
+  const [explainGrammer, setExplainGrammer] = useState(null);
+  const [explainGrammerUpdate, setExplainGrammerUpdate] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -60,19 +63,19 @@ export const AuthProvider = ({ children }) => {
   }, [update]);
 
   useEffect(() => {
-     const data = getFromLocalStorage('word')
-     setSynData(data)
-  }, [synDataUpdate])
+    const data = getFromLocalStorage("word");
+    setSynData(data);
+  }, [synDataUpdate]);
 
   useEffect(() => {
-     const data = getFromSessionStorage('rewrite')
-     setRewrite(data)
-  }, [rewriteUpdate])
+    const data = getFromSessionStorage("rewrite");
+    setRewrite(data);
+  }, [rewriteUpdate]);
 
   useEffect(() => {
-    const data = getFromSessionStorage('explainGrammer')
-    setExplainGrammer(data)
-  }, [explainGrammerUpdate])
+    const data = getFromSessionStorage("explainGrammer");
+    setExplainGrammer(data);
+  }, [explainGrammerUpdate]);
 
   return (
     <AuthContext.Provider
@@ -94,16 +97,15 @@ export const AuthProvider = ({ children }) => {
         checkUserLoader,
         synData,
         setSynData,
-        synDataUpdate, 
+        synDataUpdate,
         setSynDataUpdate,
         setRewrite,
         rewrite,
         setRewriteUpdate,
         explainGrammer,
         setExplainGrammer,
-        setExplainGrammerUpdate
-      }}
-    >
+        setExplainGrammerUpdate,
+      }}>
       {children}
     </AuthContext.Provider>
   );

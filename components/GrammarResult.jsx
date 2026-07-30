@@ -8,7 +8,6 @@ import { shareTwitter } from "@/lib/share";
 import { shareOnWhatsapp } from "@/lib/share";
 
 export default function GrammarResult({ data, copied, copyResult }) {
-  
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4">
@@ -43,38 +42,30 @@ export default function GrammarResult({ data, copied, copyResult }) {
         <p className="leading-8 text-gray-700">{data?.correctedText}</p>
 
         <div className="flex flex-wrap gap-4 mt-6 ">
-         
-
-            <button
-              onClick={() => shareOnLinkedin(data?.correctedText)}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#0A66C2] text-white font-medium shadow-md hover:bg-[#004182] hover:shadow-lg transition-all duration-300 cursor-pointer active:scale-95"
-            >
-              <FaLinkedinIn size={18} />
-              <span>Share on LinkedIn</span>
-            </button>
-
+          <button
+            onClick={() => shareOnLinkedin(data?.correctedText)}
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#0A66C2] text-white font-medium shadow-md hover:bg-[#004182] hover:shadow-lg transition-all duration-300 cursor-pointer active:scale-95">
+            <FaLinkedinIn size={18} />
+            <span>Share on LinkedIn</span>
+          </button>
 
           <button
             onClick={() => shareTwitter(data?.correctedText)}
-            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-black text-white font-medium shadow-md hover:bg-neutral-800 hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
-          >
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-black text-white font-medium shadow-md hover:bg-neutral-800 hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer">
             <FaXTwitter size={18} />
             <span>Share on X</span>
           </button>
 
-
           <button
             onClick={() => shareOnWhatsapp(data?.correctedText)}
-            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#25D366] text-white font-medium shadow-md hover:bg-[#1DA851] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
-          >
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#25D366] text-white font-medium shadow-md hover:bg-[#1DA851] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer">
             <FaWhatsapp size={18} />
             <span>Share on WhatsApp</span>
           </button>
 
-           <button
+          <button
             onClick={() => copyResult(data?.correctedText)}
-            className="flex items-center gap-2 px-4 py-3 rounded-xl bg-blue-50 dark:bg-slate-800 hover:scale-105 transition dark:text-white cursor-pointer"
-          >
+            className="flex items-center gap-2 px-4 py-3 rounded-xl bg-blue-50 dark:bg-slate-800 hover:scale-105 transition dark:text-white cursor-pointer">
             <Copy size={18} />
             {copied ? "Copied" : "Copy"}
           </button>

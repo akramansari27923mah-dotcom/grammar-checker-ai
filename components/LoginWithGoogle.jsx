@@ -12,14 +12,13 @@ import { everyWearCon } from "@/contexts/everyWear";
 const LoginWithGoogle = () => {
   const route = useRouter();
   const [loader, setLoader] = useState(false);
-  const {setUpdate} = everyWearCon()
+  const { setUpdate } = everyWearCon();
 
   const loginWithGoogleFun = async () => {
     try {
-      
       const googleProvider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, googleProvider);
-      
+
       const { displayName, email, photoURL, uid } = result.user;
 
       const payLoad = {
@@ -29,7 +28,7 @@ const LoginWithGoogle = () => {
         googleId: uid,
       };
       setLoader(true);
-      setUpdate(true)
+      setUpdate(true);
       const { data } = await api.post("/auth/google", payLoad);
       if (data?.success) {
         route.push("/");
@@ -38,15 +37,14 @@ const LoginWithGoogle = () => {
       alert(err.message);
     } finally {
       setLoader(false);
-      setUpdate(false)
+      setUpdate(false);
     }
   };
 
   return (
     <div
       onClick={loginWithGoogleFun}
-      className="flex justify-center items-center gap-2 bg-white rounded-lg hover:scale-105 transition-all cursor-pointer select-none duration-300 px-3 py-2 border border-gray-300"
-    >
+      className="flex justify-center items-center gap-2 bg-white rounded-lg hover:scale-105 transition-all cursor-pointer select-none duration-300 px-3 py-2 border border-gray-300">
       {loader ? (
         <>
           <LoaderCircle className="animate-spin" />

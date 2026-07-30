@@ -13,7 +13,6 @@ export default function ChatMarkdown({ content }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-
           li({ children }) {
             return <li className="ml-4 list-disc">{children}</li>;
           },
@@ -65,8 +64,7 @@ export default function ChatMarkdown({ content }) {
                         navigator.clipboard.writeText(code);
                         setCopied(true);
                         setTimeout(() => setCopied(false), 2000);
-                      }}
-                    >
+                      }}>
                       {copied ? "Copied" : <Copy size={14} />}
                     </button>
                   </div>
@@ -74,8 +72,7 @@ export default function ChatMarkdown({ content }) {
                   <SyntaxHighlighter
                     style={oneDark}
                     language={match[1]}
-                    PreTag="div"
-                  >
+                    PreTag="div">
                     {code}
                   </SyntaxHighlighter>
                 </div>
@@ -88,8 +85,7 @@ export default function ChatMarkdown({ content }) {
               </code>
             );
           },
-        }}
-      >
+        }}>
         {content}
       </ReactMarkdown>
     </div>
