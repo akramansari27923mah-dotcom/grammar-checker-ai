@@ -44,6 +44,7 @@ const ExplainGrammerMistakesPage = () => {
                 const {data} = await api.post('/groq/explainGrammarMistakes', {sentence})
                                 
                 if(!data?.result?.success) return setError(true)
+                    setError(false)
                 setExplainGrammer(data?.result)
                 saveInSessionStorage('explainGrammer', data?.result)
             }
