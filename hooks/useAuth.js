@@ -31,7 +31,6 @@ export const useAuth = () => {
     setUpdate(true);
     try {
       const { data } = await api.post("/auth/signup", userd);
-      console.log(data);
       
       if (data?.user) {
         router.push("/login");

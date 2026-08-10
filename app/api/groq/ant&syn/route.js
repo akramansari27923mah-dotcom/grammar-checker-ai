@@ -2,8 +2,8 @@ import { handelGroq } from "@/lib/groq";
 import { NextResponse as res } from "next/server";
 import { SynonymAntonymModel } from "@/schemas/ayn&syn.model.schema";
 import jwt from "jsonwebtoken";
-import { SYN_ANT_PROMPT } from "@/lib/syn$antPromot";
 import { config } from "@/lib/config";
+import { SYN_ANT_PROMPT } from "@/lib/allprompt";
 export const POST = async (req) => {
   try {
     const body = await req.json();

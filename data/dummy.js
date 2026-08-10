@@ -1,39 +1,156 @@
-export const data = {
-  message: "Reply successfully",
-  success: true,
-  result: {
+export const dummy = {
+  message: "Respond successfully",
+  success: false,
+  data: {
     success: true,
-    originalSentence: "i read book everyday",
-    correctedSentence: "I read a book every day.",
-    overallFeedback: "Good effort, but there are a few mistakes to correct.",
-    mistakes: [
+    overallScore: 70,
+    grammarScore: 60,
+    spellingScore: 90,
+    vocabularyScore: 70,
+    readabilityScore: 80,
+    coherenceScore: 80,
+    tone: "Informal",
+    wordCount: 196,
+    sentenceCount: 11,
+    paragraphCount: 1,
+    readingTime: "1 minute",
+    difficultyLevel: "Elementary",
+    summary:
+      "The writer describes why winter is their favorite season, mentioning its beautiful weather, happy memories, and ability to help them concentrate on their studies.",
+    overallFeedback:
+      "Good effort! The essay needs improvement in grammar, sentence structure, and vocabulary. However, it is well-organized and easy to understand.",
+    strengths: [
+      "Clear topic sentence",
+      "Use of descriptive language",
+      "Organized structure",
+    ],
+    weaknesses: [
+      "Grammar mistakes",
+      "Limited vocabulary",
+      "Lack of transitions between sentences",
+    ],
+    grammarMistakes: [
       {
         id: 1,
-        type: "Capitalization",
-        wrongText: "i",
-        correctText: "I",
-        explanation:
-          "The first word in a sentence must start with a capital letter.",
-        rule: "Always capitalize the first word in a sentence.",
+        type: "Grammar",
+        wrongText: "it make me feel very happy",
+        correctText: "it makes me feel very happy",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
       },
       {
         id: 2,
-        type: "Article",
-        wrongText: "book",
-        correctText: "a book",
-        explanation:
-          "We use 'a' before a singular noun when we are talking about any book, not a specific one.",
-        rule: "Use 'a' before singular nouns that are not specific.",
+        type: "Grammar",
+        wrongText: "the weather are cold",
+        correctText: "the weather is cold",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
       },
       {
         id: 3,
-        type: "Punctuation",
-        wrongText: "everyday",
-        correctText: "every day",
-        explanation:
-          "We use 'every day' with a space to mean each day, not 'everyday' which means done or used every day.",
-        rule: "Use 'every day' with a space to mean each day.",
+        type: "Grammar",
+        wrongText: "Every morning i goes",
+        correctText: "Every morning I go",
+        explanation: "Capitalization and subject-verb agreement",
+        rule: "Use the correct verb form to match the subject and capitalize the first-person pronoun",
+      },
+      {
+        id: 4,
+        type: "Grammar",
+        wrongText: "Last year me and my family was visited",
+        correctText: "Last year, my family and I visited",
+        explanation: "Subject-verb agreement and word order",
+        rule: "Use the correct verb form to match the subject and the correct word order",
+      },
+      {
+        id: 5,
+        type: "Grammar",
+        wrongText: "It were an amazing experience",
+        correctText: "It was an amazing experience",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
+      },
+      {
+        id: 6,
+        type: "Grammar",
+        wrongText: "The hotel have a nice view",
+        correctText: "The hotel has a nice view",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
+      },
+      {
+        id: 7,
+        type: "Grammar",
+        wrongText: "We didn't complained",
+        correctText: "We didn't complain",
+        explanation: "Verb form",
+        rule: "Use the correct verb form",
+      },
+      {
+        id: 8,
+        type: "Grammar",
+        wrongText: "Winter also help me",
+        correctText: "Winter also helps me",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
+      },
+      {
+        id: 9,
+        type: "Grammar",
+        wrongText:
+          "I usually drink hot coffee while reading books, it makes me feel more energetic",
+        correctText:
+          "I usually drink hot coffee while reading books; it makes me feel more energetic",
+        explanation: "Punctuation",
+        rule: "Use a semicolon to join two independent clauses",
+      },
+      {
+        id: 10,
+        type: "Grammar",
+        wrongText: "My friends says",
+        correctText: "My friends say",
+        explanation: "Subject-verb agreement",
+        rule: "Use the correct verb form to match the subject",
       },
     ],
+    spellingMistakes: [
+      {
+        id: 1,
+        wrongWord: "peoples",
+        correctWord: "people",
+      },
+      {
+        id: 2,
+        wrongWord: "photograph",
+        correctWord: "photographs",
+      },
+    ],
+    vocabularySuggestions: [
+      {
+        id: 1,
+        word: "happy",
+        betterWord: "joyful",
+        reason: "More descriptive and varied vocabulary",
+      },
+      {
+        id: 2,
+        word: "beautiful",
+        betterWord: "attractive",
+        reason: "More descriptive and varied vocabulary",
+      },
+      {
+        id: 3,
+        word: "amazing",
+        betterWord: "unforgettable",
+        reason: "More descriptive and varied vocabulary",
+      },
+    ],
+    quickSuggestions: [
+      "Use more descriptive language to describe winter",
+      "Add transitions between sentences to improve coherence",
+      "Use more varied vocabulary to avoid repetition",
+    ],
+    correctedEssay:
+      "My favorite season is winter because it makes me feel very happy. The weather is cold and fresh, and people wear warm clothes, which look very attractive. Every morning, I go for a walk in the park, where I see many birds singing happily. Last year, my family and I visited a hill station during winter. It was an unforgettable experience because we enjoyed playing with snow and taking many photographs. The hotel had a nice view, but the service was not very good. We didn't complain because everyone was enjoying the trip. Winter also helps me to concentrate on my studies because there is less distraction. I usually drink hot coffee while reading books; it makes me feel more energetic. My friends say that winter is too cold, but I don't agree with them because everyone has different opinions. In conclusion, winter is my favorite season, and I always wait for it every year. It teaches us to enjoy nature and spend quality time with our family.",
   },
 };

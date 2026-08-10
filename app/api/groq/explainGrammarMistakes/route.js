@@ -1,5 +1,5 @@
 import { config } from "@/lib/config";
-import { EXPLAIN_GRAMMAR_PROMPT } from "@/lib/explainGrammarPrompt";
+import { EXPLAIN_GRAMMAR_PROMPT } from "@/lib/allprompt";
 import { handelGroq } from "@/lib/groq";
 import { explainGrammerModel } from "@/schemas/grammerMistakes.model.schema";
 import { NextResponse as res } from "next/server";

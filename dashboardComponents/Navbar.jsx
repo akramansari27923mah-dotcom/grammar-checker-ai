@@ -4,9 +4,11 @@ import {
   ArrowLeftToLine,
   ArrowRightToLine,
   BookOpenText,
+  FileText,
   History,
   House,
   LayoutDashboard,
+  Lightbulb,
   Pencil,
   Save,
   Sparkles,
@@ -87,8 +89,15 @@ const Navbar = () => {
               <Link
                 href="/dashboard/explain-grammer-mistakes"
                 className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap">
-                <Sparkles />
+                <Lightbulb />
                 <span className="font-semibold">Explain Mistakes</span>
+              </Link>
+
+              <Link
+                href="/dashboard/essay-checker"
+                className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap">
+                <FileText />
+                <span className="font-semibold">Essay Checker</span>
               </Link>
 
               <Link

@@ -2,7 +2,7 @@ import { handelGroq } from "@/lib/groq";
 import { NextResponse as res } from "next/server";
 import jwt from "jsonwebtoken";
 import { config } from "@/lib/config";
-import { SENTENCE_REWRITE_PROMPT } from "@/lib/sentenceRewritePrompt";
+import { SENTENCE_REWRITE_PROMPT } from "@/lib/allprompt";
 import { rewriteModel } from "@/schemas/rewrite.model.schema";
 export const POST = async (req) => {
   try {

@@ -4,7 +4,7 @@ import { groqModel } from "@/schemas/groq.model.schema";
 import { historyModel } from "@/schemas/history.model.schema";
 import jwt from "jsonwebtoken";
 import { totalChecksModel } from "@/schemas/totalChecks.model.schema";
-import { systemPrompt } from "@/lib/groqPrompt";
+import { SYSTEM_PROMPT } from "@/lib/allprompt";
 import { config } from "@/lib/config";
 export const POST = async (req) => {
   try {
@@ -20,9 +20,7 @@ export const POST = async (req) => {
       });
     }
 
-    const sysPrompt = systemPrompt;
-
-    const groqRes = await handelGroq(prompt, sysPrompt);
+    const groqRes = await handelGroq(prompt, SYSTEM_PROMPT);
 
     const decoded = jwt.verify(
       accessToken?.value,

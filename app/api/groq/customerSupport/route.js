@@ -1,12 +1,11 @@
 import { handelGroq } from "@/lib/groq";
 import { NextResponse as res } from "next/server";
-import { supportChatPrompt } from "@/lib/supportChatPrompt";
+import { SUPPORT_CHAT_PROMPT } from "@/lib/allprompt";
 export const POST = async (req) => {
   try {
     const body = await req.json();
     const { prompt } = body;
 
-    console.log(prompt);
 
     if (!prompt) {
       return res.json({
@@ -15,9 +14,7 @@ export const POST = async (req) => {
       });
     }
 
-    const sysPrompt = supportChatPrompt;
-
-    const groqRes = await handelGroq(prompt, sysPrompt);
+    const groqRes = await handelGroq(prompt, SUPPORT_CHAT_PROMPT);
 
     return res.json(groqRes);
   } catch (err) {

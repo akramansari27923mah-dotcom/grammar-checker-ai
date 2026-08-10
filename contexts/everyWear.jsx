@@ -27,6 +27,8 @@ export const AuthProvider = ({ children }) => {
   const [rewrite, setRewrite] = useState([]);
   const [explainGrammer, setExplainGrammer] = useState(null);
   const [explainGrammerUpdate, setExplainGrammerUpdate] = useState(null);
+  const [essay, setEssay] = useState(null);
+  const [essayUpdate, setEssayUpdate] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -77,6 +79,11 @@ export const AuthProvider = ({ children }) => {
     setExplainGrammer(data);
   }, [explainGrammerUpdate]);
 
+  useEffect(() => {
+    const data = getFromSessionStorage("correctEssay")
+    setEssay(data)
+  }, [essayUpdate])
+
   return (
     <AuthContext.Provider
       value={{
@@ -105,6 +112,10 @@ export const AuthProvider = ({ children }) => {
         explainGrammer,
         setExplainGrammer,
         setExplainGrammerUpdate,
+        setEssay,
+        essay,
+        setEssayUpdate,
+        essayUpdate,
       }}>
       {children}
     </AuthContext.Provider>
