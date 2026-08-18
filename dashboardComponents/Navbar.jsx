@@ -94,15 +94,15 @@ const Navbar = () => {
                 <span className="font-semibold">Explain Mistakes</span>
               </Link>
 
-              <Link
+              {/* <Link
                 href="/dashboard/essay-checker"
                 className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap">
                 <FileText />
                 <span className="font-semibold">Essay Checker</span>
-              </Link>
+              </Link> */}
 
               <Link
-                href="/dashboard/WritingChecker"
+                href= "/dashboard/WritingChecker"
                 className="flex items-center gap-4 focus:bg-blue-100 focus:text-blue-500 px-4 py-2 rounded-lg text-nowrap">
                 <ChartNoAxesCombined />
                 <span className="font-semibold">Writing Score</span>
