@@ -45,6 +45,10 @@ const EssayCheckerPage = () => {
     vocabularyScore,
     readabilityScore,
     coherenceScore,
+    correctedEssay,
+    quickSuggestions,
+    spellingMistakes,
+    vocabularySuggestions,
     tone,
   } = essay || {};
 
@@ -243,7 +247,8 @@ const EssayCheckerPage = () => {
 
           <button
             onClick={() => {
-              (removeFromSessionStorage("correctEssay"), setEssayUpdate(!essayUpdate));
+              (removeFromSessionStorage("correctEssay"),
+                setEssayUpdate(!essayUpdate));
             }}
             className="flex items-center gap-2 rounded-full border border-indigo-200 bg-red-500 px-4 py-2 shadow-sm text-white cursor-pointer">
             <Trash size={18} />
@@ -282,7 +287,6 @@ const EssayCheckerPage = () => {
                 disabled={loader || !essayValue.trim()}
                 onClick={() =>
                   correctEssay(
-                    essay,
                     setEssay,
                     essayValue,
                     setEssayUpdate,
@@ -550,124 +554,130 @@ const EssayCheckerPage = () => {
               ))}
             </div>
 
-            <div className="flex justify-center h-140 overflow-scroll">
-              <div className="space-y-3">
-                <div className="text-base font-semibold">Spelling Mistakes</div>
-                {essay?.spellingMistakes?.map((items, index) => (
-                  <div
-                    key={items?.id || index}
-                    className="group flex items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300">
-                    {/* Wrong Word */}
-                    <div className="flex-1">
-                      <p className="text-xs font-medium text-gray-500 mb-1">
-                        Incorrect
-                      </p>
-
-                      <p className="inline-block px-3 py-1.5 rounded-lg bg-red-50 text-red-600 font-medium line-through">
-                        {items?.wrongWord}
-                      </p>
-                    </div>
-
-                    {/* Arrow */}
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-500 shrink-0">
-                      →
-                    </div>
-
-                    {/* Correct Word */}
-                    <div className="flex-1">
-                      <p className="text-xs font-medium text-gray-500 mb-1">
-                        Correct
-                      </p>
-
-                      <p className="inline-block px-3 py-1.5 rounded-lg bg-green-50 text-green-600 font-semibold">
-                        {items?.correctWord}
-                      </p>
-                    </div>
+            {!spellingMistakes.length === 0 && (
+              <div className="flex justify-center h-140 overflow-scroll">
+                <div className="space-y-3">
+                  <div className="text-base font-semibold">
+                    Spelling Mistakes
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex justify-center h-140 overflow-scroll">
-              <div className="space-y-4">
-                <div className="text-base font-semibold">
-                  Vocabulary Suggestions
-                </div>
-
-                {essay?.vocabularySuggestions?.map((items, index) => (
-                  <div
-                    key={items?.id || index}
-                    className="group bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-blue-100">
-                          💡
-                        </div>
-
-                        <div>
-                          <p className="text-xs text-gray-400 uppercase tracking-wide">
-                            Vocabulary
-                          </p>
-                          <h3 className="font-semibold text-gray-800">
-                            Better Word Suggestion
-                          </h3>
-                        </div>
-                      </div>
-
-                      <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-600">
-                        #{index + 1}
-                      </span>
-                    </div>
-
-                    {/* Word Comparison */}
-                    <div className="flex flex-col sm:flex-row items-center gap-3">
-                      {/* Current Word */}
-                      <div className="w-full flex-1 p-4 rounded-xl bg-gray-50 border border-gray-200">
-                        <p className="text-xs font-medium text-gray-400 mb-1">
-                          Current Word
+                  {essay?.spellingMistakes?.map((items, index) => (
+                    <div
+                      key={items?.id || index}
+                      className="group flex items-center justify-between gap-4 p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300">
+                      {/* Wrong Word */}
+                      <div className="flex-1">
+                        <p className="text-xs font-medium text-gray-500 mb-1">
+                          Incorrect
                         </p>
 
-                        <p className="text-gray-700 font-medium">
-                          {items?.word}
+                        <p className="inline-block px-3 py-1.5 rounded-lg bg-red-50 text-red-600 font-medium line-through">
+                          {items?.wrongWord}
                         </p>
                       </div>
 
                       {/* Arrow */}
-                      <div className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 text-blue-500 shrink-0">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-500 shrink-0">
                         →
                       </div>
 
-                      {/* Better Word */}
-                      <div className="w-full flex-1 p-4 rounded-xl bg-green-50 border border-green-100">
-                        <p className="text-xs font-medium text-green-600 mb-1">
-                          Better Word
+                      {/* Correct Word */}
+                      <div className="flex-1">
+                        <p className="text-xs font-medium text-gray-500 mb-1">
+                          Correct
                         </p>
 
-                        <p className="text-green-700 font-semibold">
-                          {items?.betterWord}
+                        <p className="inline-block px-3 py-1.5 rounded-lg bg-green-50 text-green-600 font-semibold">
+                          {items?.correctWord}
                         </p>
                       </div>
                     </div>
-
-                    {/* Reason */}
-                    <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span>📖</span>
-
-                        <p className="text-sm font-semibold text-blue-600">
-                          Why?
-                        </p>
-                      </div>
-
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        {items?.reason}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+
+            {!vocabularySuggestions.lenght && (
+              <div className="flex justify-center h-140 overflow-scroll">
+                <div className="space-y-4">
+                  <div className="text-base font-semibold">
+                    Vocabulary Suggestions
+                  </div>
+
+                  {essay?.vocabularySuggestions?.map((items, index) => (
+                    <div
+                      key={items?.id || index}
+                      className="group bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                      {/* Header */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-blue-100">
+                            💡
+                          </div>
+
+                          <div>
+                            <p className="text-xs text-gray-400 uppercase tracking-wide">
+                              Vocabulary
+                            </p>
+                            <h3 className="font-semibold text-gray-800">
+                              Better Word Suggestion
+                            </h3>
+                          </div>
+                        </div>
+
+                        <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-600">
+                          #{index + 1}
+                        </span>
+                      </div>
+
+                      {/* Word Comparison */}
+                      <div className="flex flex-col sm:flex-row items-center gap-3">
+                        {/* Current Word */}
+                        <div className="w-full flex-1 p-4 rounded-xl bg-gray-50 border border-gray-200">
+                          <p className="text-xs font-medium text-gray-400 mb-1">
+                            Current Word
+                          </p>
+
+                          <p className="text-gray-700 font-medium">
+                            {items?.word}
+                          </p>
+                        </div>
+
+                        {/* Arrow */}
+                        <div className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 text-blue-500 shrink-0">
+                          →
+                        </div>
+
+                        {/* Better Word */}
+                        <div className="w-full flex-1 p-4 rounded-xl bg-green-50 border border-green-100">
+                          <p className="text-xs font-medium text-green-600 mb-1">
+                            Better Word
+                          </p>
+
+                          <p className="text-green-700 font-semibold">
+                            {items?.betterWord}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Reason */}
+                      <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span>📖</span>
+
+                          <p className="text-sm font-semibold text-blue-600">
+                            Why?
+                          </p>
+                        </div>
+
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {items?.reason}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -684,7 +694,7 @@ const EssayCheckerPage = () => {
               </div>
             </div>
             <div className="h-110 w-full p-8 hide-scroll overflow-scroll rounded-lg bg-white shadow border border-gray-200 my-5">
-              <p>{essay?.correctedEssay}</p>
+              <p>{correctedEssay}</p>
             </div>
 
             <div className="flex justify-end items-center gap-3">
@@ -746,11 +756,11 @@ const EssayCheckerPage = () => {
                       key={btn?.id}
                       onClick={
                         btn?.name === "Linkedin"
-                          ? () => shareOnLinkedin(essay?.correctedEssay)
+                          ? () => shareOnLinkedin(correctedEssay)
                           : btn?.name === "Twitter"
-                            ? () => shareTwitter(essay?.correctedEssay)
+                            ? () => shareTwitter(correctedEssay)
                             : btn?.name === "Whatsapp"
-                              ? () => shareOnWhatsapp(essay?.correctedEssay)
+                              ? () => shareOnWhatsapp(correctedEssay)
                               : null
                       }
                       type="button"
@@ -774,7 +784,7 @@ const EssayCheckerPage = () => {
               </div>
 
               <div>
-                {essay?.quickSuggestions?.map((items, ind) => (
+                {quickSuggestions?.map((items, ind) => (
                   <div key={ind} className="flex items-center gap-3 mt-4">
                     <div className="bg-green-500 w-6 h-6 flex justify-center items-center text-white rounded-full p-1">
                       <Check size={18} />

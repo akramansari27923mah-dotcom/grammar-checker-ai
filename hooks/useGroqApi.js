@@ -4,7 +4,6 @@ import { saveInSessionStorage } from "@/lib/storageFunctions";
 
 export const useGroqApiFunctions = () => {
   const correctEssay = async (
-    essay,
     setEssay,
     essayValue,
     setEssayUpdate,
@@ -12,26 +11,27 @@ export const useGroqApiFunctions = () => {
     setError,
   ) => {
     try {
-      if (!essayValue?.trim()) return errorShow("Please enter you essay!");
-      if (essayValue.length > 5000) return errorShow("It's too much words");
+      if (!essayValue.trim()) return errorShow("Please enter you essay!");
+      if (essayValue?.length > 5000) return errorShow("It's too much words");
       setError("");
-      setLoader(true);
-
+      setLoader(true);  
+      setEssayUpdate(true);
       const { data } = await api.post("/groq/essayAnalyzer", { essayValue });
-      console.log(data?.data);
+      console.log(data);
 
       if (!data?.data?.success)
         return setError(data?.data?.message) || errorShow(data?.data?.message);
 
-      if (data?.success)
-        setEssay(data?.data) ||
-          saveInSessionStorage("correctEssay", data?.data);
+      if (data?.success) {
+        setEssay(data?.data);
+        saveInSessionStorage("correctEssay", data?.data);
+      }
     } catch (err) {
-      console.error(err?.message);
+      console.log(err?.message);
+      console.log(err?.response);
     } finally {
       setLoader(false);
       setError("");
-      setEssayUpdate(true);
     }
   };
 

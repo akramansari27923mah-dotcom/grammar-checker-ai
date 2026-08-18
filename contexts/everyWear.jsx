@@ -6,7 +6,6 @@ import {
   getFromLocalStorage,
   getFromSessionStorage,
 } from "@/lib/storageFunctions";
-import { useRouter } from "next/navigation";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext, createContext, useEffect, useState } from "react";
 
