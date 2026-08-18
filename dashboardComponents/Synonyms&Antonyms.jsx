@@ -35,6 +35,8 @@ const SynonymsAntonymsPage = () => {
       setLoader(true);
       setSynDataUpdate(true);
       const { data } = await api.post("/groq/ant&syn", { word });
+      console.log(data);
+      
       if (data?.data === undefined) return setWord("") || setError(true);
       setSynData(data?.data);
       saveInLocalStorage("word", data?.data);

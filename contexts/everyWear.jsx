@@ -29,7 +29,9 @@ export const AuthProvider = ({ children }) => {
   const [explainGrammerUpdate, setExplainGrammerUpdate] = useState(null);
   const [essay, setEssay] = useState(null);
   const [essayUpdate, setEssayUpdate] = useState(false);
-  const router = useRouter();
+  const [writing, setWriting] = useState("");
+  const [writingUpdate, setWritingUpdate] = useState(false);
+  const [writingScoreD, setWritingScoreD] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -80,9 +82,14 @@ export const AuthProvider = ({ children }) => {
   }, [explainGrammerUpdate]);
 
   useEffect(() => {
-    const data = getFromSessionStorage("correctEssay")
-    setEssay(data)
-  }, [essayUpdate])
+    const data = getFromSessionStorage("correctEssay");
+    setEssay(data);
+  }, [essayUpdate]);
+
+  useEffect(() => {
+    const data = getFromSessionStorage("writing");
+    setWritingScoreD(data);
+  }, [writingUpdate]);
 
   return (
     <AuthContext.Provider
@@ -116,6 +123,12 @@ export const AuthProvider = ({ children }) => {
         essay,
         setEssayUpdate,
         essayUpdate,
+        writing,
+        setWriting,
+        writingScoreD,
+        setWritingScoreD,
+        writingUpdate,
+        setWritingUpdate,
       }}>
       {children}
     </AuthContext.Provider>

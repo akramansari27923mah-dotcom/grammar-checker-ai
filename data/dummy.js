@@ -1,156 +1,46 @@
 export const dummy = {
-  message: "Respond successfully",
-  success: false,
+  message: "Writing Corrected successfully",
+  success: true,
   data: {
-    success: true,
-    overallScore: 70,
-    grammarScore: 60,
-    spellingScore: 90,
-    vocabularyScore: 70,
-    readabilityScore: 80,
-    coherenceScore: 80,
-    tone: "Informal",
-    wordCount: 196,
-    sentenceCount: 11,
-    paragraphCount: 1,
-    readingTime: "1 minute",
-    difficultyLevel: "Elementary",
-    summary:
-      "The writer describes why winter is their favorite season, mentioning its beautiful weather, happy memories, and ability to help them concentrate on their studies.",
-    overallFeedback:
-      "Good effort! The essay needs improvement in grammar, sentence structure, and vocabulary. However, it is well-organized and easy to understand.",
+    overallScore: 60,
+    categories: {
+      grammar: {
+        score: 50,
+        feedback:
+          "There are some grammatical errors, such as the subject-verb agreement issue in 'Education are very important' (should be 'Education is very important'). Additionally, 'it help us' should be 'it helps us'.",
+      },
+      vocabulary: {
+        score: 70,
+        feedback:
+          "The vocabulary used is simple and clear, but it lacks variety. Using more complex and nuanced words, such as 'crucial' instead of 'very important', could enhance the writing.",
+      },
+      clarity: {
+        score: 80,
+        feedback:
+          "The ideas are generally clear and easy to understand. However, some sentences could be more concise and direct, such as 'Without education, people cannot understand what is happening around them' could be rephrased for better flow.",
+      },
+      structure: {
+        score: 60,
+        feedback:
+          "The writing lacks a clear introduction, body, and conclusion. The ideas are presented in a straightforward manner, but a more organized structure could improve the overall flow.",
+      },
+      readability: {
+        score: 70,
+        feedback:
+          "The sentences are generally simple and easy to follow, but some could be more varied in terms of length and complexity to improve readability.",
+      },
+    },
     strengths: [
-      "Clear topic sentence",
-      "Use of descriptive language",
-      "Organized structure",
+      "The writing conveys a clear and important message about the importance of education.",
+      "The ideas are straightforward and easy to understand.",
+      "The writer shows enthusiasm and conviction about the topic.",
     ],
-    weaknesses: [
-      "Grammar mistakes",
-      "Limited vocabulary",
-      "Lack of transitions between sentences",
+    improvementTips: [
+      "Practice using more complex and varied sentence structures to improve readability.",
+      "Use a dictionary or thesaurus to expand your vocabulary and avoid repetitive word choices.",
+      "Consider adding transitional phrases or words to connect ideas between sentences and improve the overall flow.",
     ],
-    grammarMistakes: [
-      {
-        id: 1,
-        type: "Grammar",
-        wrongText: "it make me feel very happy",
-        correctText: "it makes me feel very happy",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-      {
-        id: 2,
-        type: "Grammar",
-        wrongText: "the weather are cold",
-        correctText: "the weather is cold",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-      {
-        id: 3,
-        type: "Grammar",
-        wrongText: "Every morning i goes",
-        correctText: "Every morning I go",
-        explanation: "Capitalization and subject-verb agreement",
-        rule: "Use the correct verb form to match the subject and capitalize the first-person pronoun",
-      },
-      {
-        id: 4,
-        type: "Grammar",
-        wrongText: "Last year me and my family was visited",
-        correctText: "Last year, my family and I visited",
-        explanation: "Subject-verb agreement and word order",
-        rule: "Use the correct verb form to match the subject and the correct word order",
-      },
-      {
-        id: 5,
-        type: "Grammar",
-        wrongText: "It were an amazing experience",
-        correctText: "It was an amazing experience",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-      {
-        id: 6,
-        type: "Grammar",
-        wrongText: "The hotel have a nice view",
-        correctText: "The hotel has a nice view",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-      {
-        id: 7,
-        type: "Grammar",
-        wrongText: "We didn't complained",
-        correctText: "We didn't complain",
-        explanation: "Verb form",
-        rule: "Use the correct verb form",
-      },
-      {
-        id: 8,
-        type: "Grammar",
-        wrongText: "Winter also help me",
-        correctText: "Winter also helps me",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-      {
-        id: 9,
-        type: "Grammar",
-        wrongText:
-          "I usually drink hot coffee while reading books, it makes me feel more energetic",
-        correctText:
-          "I usually drink hot coffee while reading books; it makes me feel more energetic",
-        explanation: "Punctuation",
-        rule: "Use a semicolon to join two independent clauses",
-      },
-      {
-        id: 10,
-        type: "Grammar",
-        wrongText: "My friends says",
-        correctText: "My friends say",
-        explanation: "Subject-verb agreement",
-        rule: "Use the correct verb form to match the subject",
-      },
-    ],
-    spellingMistakes: [
-      {
-        id: 1,
-        wrongWord: "peoples",
-        correctWord: "people",
-      },
-      {
-        id: 2,
-        wrongWord: "photograph",
-        correctWord: "photographs",
-      },
-    ],
-    vocabularySuggestions: [
-      {
-        id: 1,
-        word: "happy",
-        betterWord: "joyful",
-        reason: "More descriptive and varied vocabulary",
-      },
-      {
-        id: 2,
-        word: "beautiful",
-        betterWord: "attractive",
-        reason: "More descriptive and varied vocabulary",
-      },
-      {
-        id: 3,
-        word: "amazing",
-        betterWord: "unforgettable",
-        reason: "More descriptive and varied vocabulary",
-      },
-    ],
-    quickSuggestions: [
-      "Use more descriptive language to describe winter",
-      "Add transitions between sentences to improve coherence",
-      "Use more varied vocabulary to avoid repetition",
-    ],
-    correctedEssay:
-      "My favorite season is winter because it makes me feel very happy. The weather is cold and fresh, and people wear warm clothes, which look very attractive. Every morning, I go for a walk in the park, where I see many birds singing happily. Last year, my family and I visited a hill station during winter. It was an unforgettable experience because we enjoyed playing with snow and taking many photographs. The hotel had a nice view, but the service was not very good. We didn't complain because everyone was enjoying the trip. Winter also helps me to concentrate on my studies because there is less distraction. I usually drink hot coffee while reading books; it makes me feel more energetic. My friends say that winter is too cold, but I don't agree with them because everyone has different opinions. In conclusion, winter is my favorite season, and I always wait for it every year. It teaches us to enjoy nature and spend quality time with our family.",
+    summary:
+      "This writing demonstrates a clear and important message about the importance of education, but could be improved with more attention to grammatical accuracy, vocabulary variety, and structural organization.",
   },
 };
